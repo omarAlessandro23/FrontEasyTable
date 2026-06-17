@@ -1,0 +1,29 @@
+<h2>Lista de Reviews</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>Restaurant ID</th>
+      <th>Rating</th>
+      <th>Comentario</th>
+      <th>Fecha</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let r of reviews">
+      <td>{{ r.reviewId }}</td>
+      <td>{{ r.userId }}</td>
+      <td>{{ r.restaurantId }}</td>
+      <td>{{ r.rating }}</td>
+      <td>{{ r.comment }}</td>
+      <td>{{ r.createdAt }}</td>
+      <td>
+        <button (click)="eliminar(r.reviewId)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

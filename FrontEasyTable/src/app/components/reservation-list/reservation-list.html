@@ -1,0 +1,33 @@
+<h2>Lista de Reservaciones</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuario</th>
+      <th>Restaurante</th>
+      <th>Horario</th>
+      <th>Mesa</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>N° Personas</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let r of reservations">
+      <td>{{ r.reservationId }}</td>
+      <td>{{ r.idUsuario }}</td>
+      <td>{{ r.restaurantid }}</td>
+      <td>{{ r.scheduleId }}</td>
+      <td>{{ r.tableId }}</td>
+      <td>{{ r.reservationDate }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.numberPeople }}</td>
+      <td>
+        <button (click)="eliminar(r.reservationId)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

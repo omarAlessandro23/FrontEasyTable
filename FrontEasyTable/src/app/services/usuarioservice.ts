@@ -15,4 +15,7 @@ export class Usuarioservice {
   list() {
     return this.http.get<Usuario[]>(`${this.url}/lista`);
   }
+  delete(id: number) {
+    return this.http.delete(`${this.url}/eliminar/${id}`);
+    }
 }
