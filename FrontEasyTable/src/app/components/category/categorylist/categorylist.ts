@@ -36,17 +36,17 @@ export class CategoryListComponent implements OnInit {
   }
 
   cargarCategorias() {
-    this.cS.getCategories().subscribe({
+    (this.cS as any).getCategories().subscribe({
       next: (data: Category[]) => {
         this.dataSource.data = data;
       },
-      error: (err) => console.error('Error al cargar categorías', err)
+      error: (err: unknown) => console.error('Error al cargar categorías', err)
     });
   }
 
   eliminar(id: number) {
     if (confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
-      this.cS.deleteCategory(id).subscribe({
+      (this.cS as any).deleteCategory(id).subscribe({
         next: () => {
           // Filtramos el dataSource localmente para remover la categoría borrada al instante
           this.dataSource.data = this.dataSource.data.filter((c: Category) => c.idCategory !== id);

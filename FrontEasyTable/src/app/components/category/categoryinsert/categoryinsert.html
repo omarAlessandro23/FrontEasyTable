@@ -1,18 +1,21 @@
-<div class="container" style="padding: 20px; max-width: 400px;">
-  <h2>Nueva Categoría</h2>
+<form (ngSubmit)="saveCategory()">
 
-  <form (ngSubmit)="saveCategory()" #categoryForm="ngForm">
-    <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 15px;">
-      <mat-label>Nombre de la Categoría</mat-label>
-      <input matInput [(ngModel)]="newCategory.nombreCategoria" name="nombre" required>
-    </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre de la categoría</mat-label>
+    <input
+      matInput
+      name="nombreCategoria"
+      [(ngModel)]="newCategory.nombreCategoria"
+      required
+    />
+  </mat-form-field>
 
-    <button mat-raised-color color="primary" type="submit" style="width: 100%;">
-      Guardar Categoría
-    </button>
-  </form>
+  <button mat-raised-button color="primary" type="submit">
+    Guardar
+  </button>
 
-  <div *ngIf="message" [style.color]="isError ? 'red' : 'green'" style="margin-top: 15px; font-weight: bold;">
-    {{ message }}
-  </div>
+</form>
+
+<div *ngIf="message">
+  {{ message }}
 </div>

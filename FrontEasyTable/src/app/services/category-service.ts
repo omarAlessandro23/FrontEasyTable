@@ -1,39 +1,35 @@
-
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Category } from '../models/category'; // Asegúrate de que la ruta sea correcta
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment.development';
+import { Category } from '../models/category';
+
+const base_url = environment.base;
+
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  // Cambia esta URL por la de tu API de Spring Boot
-  private apiUrl = 'http://localhost:8080/categories'; 
+  private url = `${base_url}/categories`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  // Obtener todas las categorías
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.apiUrl);
+  list() {
+    return this.http.get<Category[]>(this.url);
   }
 
-  // Obtener una categoría por ID
-  getCategoryById(id: number): Observable<Category> {
-    return this.http.get<Category>(`${this.apiUrl}/${id}`);
+  listId(id: number) {
+    return this.http.get<Category>(`${this.url}/${id}`);
   }
 
-  // Crear una nueva categoría
-  createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(this.apiUrl, category);
+  insert(category: Category) {
+    return this.http.post<Category>(this.url, category);
   }
 
-  // Actualizar una categoría existente
-  updateCategory(id: number, category: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.apiUrl}/${id}`, category);
+  update(id: number, category: Category) {
+    return this.http.put<Category>(`${this.url}/${id}`, category);
   }
 
-  // Eliminar una categoría
-  deleteCategory(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }
