@@ -1,0 +1,63 @@
+/* Fondo de la página */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+/* Título */
+.container h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #3f51b5;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.example-form {
+    width: 100%;
+    max-width: 650px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Campos */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Botón */
+button[matButton],
+button[mat-raised-button],
+button {
+    width: 100%;
+    height: 48px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Contenedor del botón */
+.example-form div:last-child {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .example-form {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .container h2 {
+        font-size: 26px;
+    }
+}
