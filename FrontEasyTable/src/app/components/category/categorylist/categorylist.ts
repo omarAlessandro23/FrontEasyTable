@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit {
   dataSource: MatTableDataSource<Category> = new MatTableDataSource();
   
   // 'c1' para el ID, 'c2' para el nombre y 'c3' para el botón de eliminar
-  displayedColumns: string[] = ['c1', 'c2', 'c3']; 
+  displayedColumns: string[] = ['c1', 'c2', 'c3','c4']; 
 
   constructor(
     private cS: CategoryService, 
