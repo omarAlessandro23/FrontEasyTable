@@ -6,7 +6,9 @@ import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent
 import { UsuarioList } from './components/usuariocomponent/usuario-list/usuario-list';
 import { UsuarioInsert } from './components/usuariocomponent/usuario-insert/usuario-insert';
 import { Categoryupdate } from './components/category/categoryupdate/categoryupdate';
-
+import { Restaurantcomponent } from './components/restaurantcomponent/restaurantcomponent';
+import { Restaurantinsert } from './components/restaurantcomponent/restaurantinsert/restaurantinsert';
+import { Restaurantlist } from './components/restaurantcomponent/restaurantlist/restaurantlist';
 export const routes: Routes = [
   {
     path: '',
@@ -53,7 +55,15 @@ export const routes: Routes = [
       }
     ]
   },
-
+ 
+  {
+  path:'restaurant',
+        component:Restaurantcomponent,
+        children:[
+            { path: 'news', component: Restaurantinsert },
+            { path: 'list', component: Restaurantlist },
+      ]
+  },
   // SIEMPRE AL FINAL
   {
     path: '**',

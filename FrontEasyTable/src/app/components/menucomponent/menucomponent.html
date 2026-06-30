@@ -27,10 +27,25 @@
   <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
   Usuario
   </button>
+
+  <button
+      mat-button
+      class="btn-rojo"
+      aria-label="Menu Restaurant"
+      [matMenuTriggerFor]="menuRestaurant"
+    >
+      <mat-icon>Restaurant</mat-icon>
+      <span>Restaurant</span>
+    </button>
  </mat-toolbar>
   <mat-menu #menuUsuario="matMenu">
         <button mat-menu-item routerLink="/usuario/news"><mat-icon>add</mat-icon>Registrar</button>
         <button mat-menu-item routerLink="/usuario/lista"><mat-icon>list</mat-icon>Lista</button>
+    </mat-menu>
+
+    <mat-menu #menuRestaurant="matMenu">
+      <button mat-menu-item routerLink="/restaurant/news"><mat-icon>add</mat-icon>Registrar</button>
+      <button mat-menu-item routerLink="/restaurant/list"><mat-icon>list</mat-icon>Lista</button>
     </mat-menu>
 
 </div>

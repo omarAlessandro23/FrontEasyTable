@@ -5,13 +5,13 @@ import { CategoryService } from '../../../services/category-service';// Ajusta l
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, NavigationEnd, Event } from '@angular/router';
+import { Router, NavigationEnd, Event, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, MatButtonModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule, RouterLink],
   templateUrl: './categorylist.html',
   styleUrl: './categorylist.css',
 })
@@ -36,13 +36,14 @@ export class CategoryListComponent implements OnInit {
   }
 
   cargarCategorias() {
-    (this.cS as any).getCategories().subscribe({
-      next: (data: Category[]) => {
-        this.dataSource.data = data;
-      },
-      error: (err: unknown) => console.error('Error al cargar categorías', err)
-    });
-  }
+  // Quitamos el 'as any' y llamamos a list()
+  this.cS.list().subscribe({
+    next: (data: Category[]) => {
+      this.dataSource.data = data;
+    },
+    error: (err: unknown) => console.error('Error al cargar categorías', err)
+  });
+}
 
   eliminar(id: number) {
     if (confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {

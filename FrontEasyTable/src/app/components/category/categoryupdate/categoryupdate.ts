@@ -75,7 +75,7 @@ export class Categoryupdate implements OnInit {
 
   init() {
 
-    this.cS.listId(this.id).subscribe((data) => {
+    this.cS.listId(this.id).subscribe((data: Category) => {
 
       this.form.patchValue({
         codigo: data.idCategory,

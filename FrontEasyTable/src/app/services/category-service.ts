@@ -9,12 +9,12 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class CategoryService {
-  private url = `${base_url}/categories`;
+  private url = `${base_url}/categoria`;
 
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Category[]>(this.url);
+    return this.http.get<Category[]>(`${this.url}/listar`);
   }
 
   listId(id: number) {
@@ -22,7 +22,7 @@ export class CategoryService {
   }
 
   insert(category: Category) {
-    return this.http.post<Category>(this.url, category);
+    return this.http.post<Category>(`${this.url}/registrar`, category);
   }
 
   update(id: number, category: Category) {
@@ -30,6 +30,6 @@ export class CategoryService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    return this.http.delete(`${this.url}/borrar/${id}`);
   }
 }

@@ -86,7 +86,7 @@ export class Usuarioupdate implements OnInit {
 
   init() {
 
-    this.uS.listId(this.id).subscribe((data) => {
+    this.uS.listId(this.id).subscribe((data: Usuario) => {
 
       this.form.patchValue({
         codigo: data.idUsuario,
