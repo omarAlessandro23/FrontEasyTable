@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Lista de Horarios</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="c1">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.scheduleId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="c2">
+      <th mat-header-cell *matHeaderCellDef> Día de la Semana </th>
+      <td mat-cell *matCellDef="let element"> {{element.dayOfWeek}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="c3">
+      <th mat-header-cell *matHeaderCellDef> Hora Apertura </th>
+      <td mat-cell *matCellDef="let element"> {{element.openTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="c4">
+      <th mat-header-cell *matHeaderCellDef> Hora Cierre </th>
+      <td mat-cell *matCellDef="let element"> {{element.closeTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="c5">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="eliminar(element.scheduleId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
