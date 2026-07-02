@@ -15,6 +15,10 @@ import { Schedulelist } from './components/schedulecomponent/schedulelist/schedu
 import { Restauranttablecomponent } from './components/restauranttablecomponent/restauranttablecomponent';
 import { Restauranttableinsert } from './components/restauranttablecomponent/restauranttableinsert/restauranttableinsert';
 import { RestaurantTablelist } from './components/restauranttablecomponent/restauranttablelist/restauranttablelist';
+import { Usuarioupdate } from './components/usuariocomponent/usuarioupdate/usuarioupdate';
+import { Restaurantupdate } from './components/restaurantcomponent/restaurantupdate/restaurantupdate';
+import { Scheduleupdate } from './components/schedulecomponent/scheduleupdate/scheduleupdate';
+import { Restauranttableupdate } from './components/restauranttablecomponent/restauranttableupdate/restauranttableupdate';
 export const routes: Routes = [
   {
     path: '',
@@ -55,34 +59,38 @@ export const routes: Routes = [
         path: 'lista', component: UsuarioList
       },
       {
-        path: 'news',  component: UsuarioInsert
-      }
+        path: 'news', component: UsuarioInsert
+      },
+      { path: 'edit/:id', component: Usuarioupdate }
     ]
   },
- 
+
   {
-  path:'restaurant',
-        component:Restaurantcomponent,
-        children:[
-            { path: 'news', component: Restaurantinsert },
-            { path: 'list', component: Restaurantlist },
-      ]
+    path: 'restaurant',
+    component: Restaurantcomponent,
+    children: [
+      { path: 'news', component: Restaurantinsert },
+      { path: 'list', component: Restaurantlist },
+      { path: 'edit/:id', component: Restaurantupdate }
+    ]
   },
   {
-  path:'schedules',
-        component:Schedulecomponent,
-        children:[
-            { path: 'news', component: Scheduleinsert },
-            { path: 'list', component: Schedulelist },
-      ]
+    path: 'schedules',
+    component: Schedulecomponent,
+    children: [
+      { path: 'news', component: Scheduleinsert },
+      { path: 'list', component: Schedulelist },
+      { path: 'edit/:id', component: Scheduleupdate }
+    ]
   },
-   {
-  path:'tables',
-        component:Restauranttablecomponent,
-        children:[
-            { path: 'news', component: Restauranttableinsert },
-            { path: 'list', component: RestaurantTablelist },
-      ]
+  {
+    path: 'tables',
+    component: Restauranttablecomponent,
+    children: [
+      { path: 'news', component: Restauranttableinsert },
+      { path: 'list', component: RestaurantTablelist },
+      { path: 'edit/:id', component: Restauranttableupdate }
+    ]
   },
   // SIEMPRE AL FINAL
   {
