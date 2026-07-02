@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Registrar Nueva Mesa</h2>
+
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
+    
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Zona / Ubicación de la Mesa</mat-label>
+      <input matInput type="text" formControlName="locationZone" placeholder="Ej. Terraza, VIP, Zona Central" maxlength="50">
+      <mat-error *ngIf="form.get('locationZone')?.hasError('required')">
+        La ubicación es <strong>obligatoria</strong>.
+      </mat-error>
+      <mat-error *ngIf="form.get('locationZone')?.hasError('maxlength')">
+        No puede exceder los <strong>50 caracteres</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="botones-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Aceptar</button>
+      <button mat-raised-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+
+  </form>
+</div>

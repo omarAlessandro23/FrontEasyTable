@@ -1,0 +1,21 @@
+<form (ngSubmit)="saveCategory()">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre de la categoría</mat-label>
+    <input
+      matInput
+      name="nombreCategoria"
+      [(ngModel)]="newCategory.nombreCategoria"
+      required
+    />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    Guardar
+  </button>
+
+</form>
+
+<div *ngIf="message">
+  {{ message }}
+</div>

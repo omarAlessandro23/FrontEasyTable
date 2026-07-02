@@ -1,0 +1,101 @@
+<div class="container">
+    <div style="text-align: center; margin: 3%;">
+        <h2>Registro de Usuario</h2>
+    </div>
+
+    <div style="text-align: center; margin: 3%;">
+        <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Usuario</mat-label>
+                <input matInput placeholder="nombre del usuario" formControlName="username">
+                <mat-error *ngIf="form.get('username')?.hasError('username')">
+                    El username es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+                    Máximo 100 caracteres
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Correo</mat-label>
+                <input matInput placeholder=" correo" formControlName="correo">
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>contrasenia</mat-label>
+                <input matInput placeholder=" contrasenia" formControlName="contrasenia">
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field appearance="outline">
+                <mat-label>Hora de creacion</mat-label>
+
+                <input matInput type="time" min="10:00" max="17:00" formControlName="horacreacion">
+
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>nombre completo</mat-label>
+                <input matInput placeholder=" nombrecompleto" formControlName="nombrecompleto">
+            </mat-form-field>
+
+
+            <br />
+
+            <mat-form-field appearance="outline">
+                <mat-label>numero de celular</mat-label>
+
+                <input matInput placeholder=" numcelular" formControlName="numcelular">
+
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field appearance="outline">
+                <mat-label>Ciudad</mat-label>
+
+                <input matInput placeholder=" ciudad" formControlName="ciudad">
+
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field appearance="outline">
+                <mat-label>longitud</mat-label>
+
+                <input matInput placeholder=" longitud" formControlName="longitud">
+
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field appearance="outline">
+                <mat-label>latitud</mat-label>
+
+                <input matInput placeholder=" latitud" formControlName="latitud">
+
+            </mat-form-field>
+
+            <br />
+
+            <div>
+                <button mat-raised-button color="primary" type="submit">
+                    Registrar
+                </button>
+
+                <button mat-raised-button color="warn" type="button" (click)="cancelar()">
+                    Cancelar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

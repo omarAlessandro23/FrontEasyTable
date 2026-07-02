@@ -1,0 +1,82 @@
+<div class="container">
+
+ <mat-toolbar class="custom-toolbar">
+  <button
+   matButton
+   class="btn-rojo"
+   aria-label="Example icon-button with menu icon"
+   [matMenuTriggerFor]="menuCurso"
+  >
+  <mat-icon aria-hidden="false" aria-label="Example label icon" fontIcon="label"></mat-icon>
+  Categoria
+  </button>
+ </mat-toolbar>
+
+
+  <mat-toolbar class="custom-toolbar">
+  <button
+   matButton
+   class="btn-rojo"
+   aria-label="Example icon-button with menu icon"
+   [matMenuTriggerFor]="menuUsuario"
+  >
+  <mat-icon aria-hidden="false" aria-label="Example person icon" fontIcon="person"></mat-icon>
+  Usuario
+  </button>
+
+  <button
+      mat-button
+      class="btn-rojo"
+      aria-label="Menu Restaurant"
+      [matMenuTriggerFor]="menuRestaurant"
+    >
+      <mat-icon aria-hidden="false" aria-label="Example dining  icon" fontIcon="dining "></mat-icon>
+  Restaurante
+  </button>
+
+    <button
+   matButton
+   class="btn-rojo"
+   aria-label="Example icon-button with menu icon"
+   [matMenuTriggerFor]="menuSchedule"
+  >
+  <mat-icon aria-hidden="false" aria-label="Example schedule  icon" fontIcon="schedule "></mat-icon>
+  Horario
+  </button>
+
+   <button
+   matButton
+   class="btn-rojo"
+   aria-label="Example icon-button with menu icon"
+   [matMenuTriggerFor]="menuTable"
+  >
+  <mat-icon aria-hidden="false" aria-label="Example deck icon" fontIcon="deck"></mat-icon>
+  Mesa
+  </button>
+ </mat-toolbar>
+
+  <mat-menu #menuUsuario="matMenu">
+        <button mat-menu-item routerLink="/usuario/news"><mat-icon>add</mat-icon>Registrar</button>
+        <button mat-menu-item routerLink="/usuario/lista"><mat-icon>list</mat-icon>Lista</button>
+    </mat-menu>
+
+    <mat-menu #menuRestaurant="matMenu">
+      <button mat-menu-item routerLink="/restaurant/news"><mat-icon>add</mat-icon>Registrar</button>
+      <button mat-menu-item routerLink="/restaurant/list"><mat-icon>list</mat-icon>Lista</button>
+    </mat-menu>
+
+     <mat-menu #menuCurso="matMenu">
+  <button mat-menu-item routerLink="categories/new"><mat-icon>add</mat-icon>Registrar</button>
+  <button mat-menu-item routerLink="categories"><mat-icon>list</mat-icon>Lista</button>
+ </mat-menu>
+
+ <mat-menu #menuSchedule="matMenu">
+      <button mat-menu-item routerLink="/schedules/news"><mat-icon>add</mat-icon>Registrar</button>
+      <button mat-menu-item routerLink="/schedules/list"><mat-icon>list</mat-icon>Lista</button>
+    </mat-menu>
+
+    <mat-menu #menuTable="matMenu">
+      <button mat-menu-item routerLink="/tables/news"><mat-icon>add</mat-icon>Registrar</button>
+      <button mat-menu-item routerLink="/tables/list"><mat-icon>list</mat-icon>Lista</button>
+    </mat-menu>
+</div>

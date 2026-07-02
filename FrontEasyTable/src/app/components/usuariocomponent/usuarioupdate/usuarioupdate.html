@@ -1,0 +1,131 @@
+<div class="container">
+    <div style="text-align: center; margin: 2%">
+        <h2>Actualizar</h2>
+    </div>
+    <div style="text-align: center; margin: 3%">
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>ID:</mat-label>
+                <input matInput formControlName="codigo" readonly="true" />
+                <mat-error>
+                    @if (form.get('id')?.hasError('required')) {
+                    Ingrese ID!!
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" />
+
+                <mat-error>
+                    @if (form.get('username')?.hasError('required')) {
+                    Ingrese username!!
+                    }
+
+                    @if (form.get('username')?.hasError('maxlength')) {
+                    Max20!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="correo" />
+                <mat-error>
+                    @if (form.get('correo')?.hasError('required')) {
+                    Ingrese correo!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="contrasenia" />
+                <mat-error>
+                    @if (form.get('contrasenia')?.hasError('required')) {
+                    Ingrese contraseña!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Hora de creacion</mat-label>
+                <input matInput formControlName="horacreacion" />
+
+                <mat-error>
+                    @if (form.get('horacreacion')?.hasError('required')) {
+                    Ingrese hora de creacion!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Nombre completo</mat-label>
+                <input matInput formControlName="ncompleto" />
+
+                <mat-error>
+                    @if (form.get('ncompleto')?.hasError('required')) {
+                    Ingrese nombre completo!!
+                    }
+
+                    @if (form.get('ncompleto')?.hasError('maxlength')) {
+                    Max20!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Celular</mat-label>
+                <input matInput formControlName="ncelular" />
+
+                <mat-error>
+                    @if (form.get('ncelular')?.hasError('required')) {
+                    Ingrese celular!!
+                    }
+
+                    @if (form.get('ncelular')?.hasError('maxlength')) {
+                    Max 9!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Ciudad</mat-label>
+                <input matInput formControlName="ciudad" />
+
+                <mat-error>
+                    @if (form.get('ciudad')?.hasError('required')) {
+                    Ingrese ciudad!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Longitud</mat-label>
+                <input matInput formControlName="longitud" />
+
+                <mat-error>
+                    @if (form.get('longitud')?.hasError('required')) {
+                    Ingrese longitud!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Latitud</mat-label>
+                <input matInput formControlName="latitud" />
+
+                <mat-error>
+                    @if (form.get('latitud')?.hasError('required')) {
+                    Ingrese latitud!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <div>
+                <button matButton="elevated">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

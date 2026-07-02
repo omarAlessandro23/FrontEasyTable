@@ -1,0 +1,38 @@
+<div class="container">
+    <div style="text-align: center; margin: 2%">
+        <h2>Actualizar</h2>
+    </div>
+    <div style="text-align: center; margin: 3%">
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>ID:</mat-label>
+                <input matInput formControlName="codigo" readonly="true" />
+                <mat-error>
+                    @if (form.get('codigo')?.hasError('required')) {
+                    Ingrese ID!!
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+            <mat-form-field>
+                <mat-label>Categorias</mat-label>
+                <input matInput formControlName="nombre" />
+
+                <mat-error>
+                    @if (form.get('nombre')?.hasError('required')) {
+                    Ingrese categoria!!
+                    }
+
+                    @if (form.get('nombre')?.hasError('maxlength')) {
+                    Max20!!
+                    }
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <div>
+                <button matButton="elevated">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

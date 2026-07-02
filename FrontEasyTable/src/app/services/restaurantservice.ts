@@ -1,30 +1,30 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { Usuario } from '../models/Usuario';
+import { Restaurant } from '../models/Restaurant';
+import { HttpClient } from '@angular/common/http';
 
 const base_url = environment.base;
 
 @Injectable({
   providedIn: 'root',
 })
-export class Usuarioservice {
-  private url = `${base_url}/usuario`;
+export class Restaurantservice {
+    private url = `${base_url}/restaurants`;
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Usuario[]>(`${this.url}/listar`);
+    return this.http.get<Restaurant[]>(`${this.url}/listar`);
   }
   listId(id: number) {
-      return this.http.get<Usuario>(`${this.url}/${id}`);
+      return this.http.get<Restaurant>(`${this.url}/${id}`);
     }
-  insert(c: Usuario) {
+  insert(c: Restaurant) {
     return this.http.post(`${this.url}/registrar`, c);
   }
   delete(id: number) {
     return this.http.delete(`${this.url}/eliminar/${id}`, { responseType: 'text' });
   }
-  update(id: number, Usuario: Usuario) {
-      return this.http.put<Usuario>(`${this.url}/${id}`, Usuario);
+  update(id: number, Restaurant: Restaurant) {
+      return this.http.put<Restaurant>(`${this.url}/${id}`, Restaurant);
     }
 }

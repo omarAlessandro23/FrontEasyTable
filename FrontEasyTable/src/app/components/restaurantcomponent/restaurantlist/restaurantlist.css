@@ -1,0 +1,80 @@
+/* Contenedor principal para centrar la tarjeta */
+.container {
+  margin: 40px auto;
+  max-width: 90%;
+  padding: 0; /* Quitamos el padding para que la tabla llegue a los bordes si es necesario */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra más suave y moderna */
+  overflow: hidden; /* Corta los bordes rectos de la tabla interna */
+}
+
+/* Contenedor de elevación de Angular Material */
+.mat-elevation-z8 {
+  box-shadow: none !important; /* Eliminamos la sombra por defecto de Material */
+  width: 100%;
+}
+
+/* Forzar a la tabla a ocupar el 100% del contenedor */
+table.mat-table {
+  width: 100%;
+  background-color: transparent;
+}
+
+/* Cabeceras de la tabla (Mejor tipografía y espaciado) */
+th.mat-header-cell {
+  background-color: #f8f9fa; /* Fondo gris claro muy sutil */
+  color: #2c3e50; /* Color oscuro profesional */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 20px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* Celdas del cuerpo de la tabla */
+td.mat-cell {
+  padding: 18px 16px;
+  font-size: 14px;
+  color: #4a5568;
+  border-bottom: 1px solid #edf2f7;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Efecto hover elegante al pasar el mouse por las filas */
+tr.mat-row:hover {
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Estilos de los enlaces para Web y Maps (Como botones sutiles) */
+td.mat-cell a {
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+td.mat-cell a:hover {
+  color: #2b6cb0;
+  text-decoration: underline;
+}
+
+/* Centrar visualmente las acciones */
+td.mat-cell:last-child, th.mat-header-cell:last-child {
+  text-align: center;
+}
+
+/* Botones de acción (Editar / Eliminar) */
+button[mat-icon-button], a[mat-icon-button] {
+  transition: transform 0.2s ease;
+}
+
+button[mat-icon-button]:hover, a[mat-icon-button]:hover {
+  transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+}
