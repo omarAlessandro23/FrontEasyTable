@@ -1,0 +1,49 @@
+<div class="container">
+    <div style="text-align: center; margin: 2%">
+        <h2>Actualizar Mesa</h2>
+    </div>
+
+    <div style="text-align: center; margin: 3%">
+        <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+
+            <!-- ID -->
+            <mat-form-field class="example-full-width">
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="codigo" readonly />
+
+                <mat-error>
+                    @if (form.get('codigo')?.hasError('required')) {
+                    El ID es obligatorio.
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <!-- Localidad -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Localidad</mat-label>
+                <input matInput formControlName="localidad" />
+
+                <mat-error>
+                    @if (form.get('localidad')?.hasError('required')) {
+                    La localidad es obligatoria.
+                    }
+
+                    @if (form.get('localidad')?.hasError('maxlength')) {
+                    Máximo 30 caracteres.
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <div>
+                <button matButton="elevated" color="primary">
+                    Actualizar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

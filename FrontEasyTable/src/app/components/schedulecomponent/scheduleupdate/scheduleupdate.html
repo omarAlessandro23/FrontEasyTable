@@ -1,0 +1,94 @@
+<div class="container">
+    <div style="text-align: center; margin: 2%">
+        <h2>Actualizar Horario</h2>
+    </div>
+
+    <div style="text-align: center; margin: 3%">
+        <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+
+            <!-- ID -->
+            <mat-form-field class="example-full-width">
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="codigo" readonly />
+
+                <mat-error>
+                    @if (form.get('codigo')?.hasError('required')) {
+                        El ID es obligatorio.
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <!-- Día de la semana -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Día de la semana</mat-label>
+
+                <mat-select formControlName="diassemana">
+                    <mat-option [value]="1">Lunes</mat-option>
+                    <mat-option [value]="2">Martes</mat-option>
+                    <mat-option [value]="3">Miércoles</mat-option>
+                    <mat-option [value]="4">Jueves</mat-option>
+                    <mat-option [value]="5">Viernes</mat-option>
+                    <mat-option [value]="6">Sábado</mat-option>
+                    <mat-option [value]="7">Domingo</mat-option>
+                </mat-select>
+
+                <mat-error>
+                    @if (form.get('diassemana')?.hasError('required')) {
+                        Seleccione un día de la semana.
+                    }
+
+                    @if (form.get('diassemana')?.hasError('min') || form.get('diassemana')?.hasError('max')) {
+                        El día debe estar entre 1 y 7.
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <!-- Hora de apertura -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Hora de apertura</mat-label>
+                <input matInput type="time" formControlName="horaapertura" />
+
+                <mat-error>
+                    @if (form.get('horaapertura')?.hasError('required')) {
+                        La hora de apertura es obligatoria.
+                    }
+
+                    @if (form.get('horaapertura')?.hasError('pattern')) {
+                        El formato debe ser HH:mm.
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <!-- Hora de cierre -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Hora de cierre</mat-label>
+                <input matInput type="time" formControlName="horacierre" />
+
+                <mat-error>
+                    @if (form.get('horacierre')?.hasError('required')) {
+                        La hora de cierre es obligatoria.
+                    }
+
+                    @if (form.get('horacierre')?.hasError('pattern')) {
+                        El formato debe ser HH:mm.
+                    }
+                </mat-error>
+            </mat-form-field>
+
+            <br />
+
+            <div style="text-align: center;">
+                <button matButton="elevated" color="primary">
+                    Actualizar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
