@@ -17,6 +17,20 @@ import { Restauranttableinsert } from './components/restauranttablecomponent/res
 import { RestaurantTablelist } from './components/restauranttablecomponent/restauranttablelist/restauranttablelist';
 import { Authenticate } from './components/authenticate/authenticate';
 import { seguridadGuard } from './guard/seguridad-guard';
+import { Usuarioupdate } from './components/usuariocomponent/usuarioupdate/usuarioupdate';
+import { Restaurantupdate } from './components/restaurantcomponent/restaurantupdate/restaurantupdate';
+import { Reviewcomponent } from './components/reviewcomponent/reviewcomponent';
+import { ReviewListar } from './components/reviewcomponent/review-listar/review-listar';
+import { ReviewInsertar } from './components/reviewcomponent/review-insertar/review-insertar';
+import { ReviewUpdate } from './components/reviewcomponent/review-update/review-update';
+import { Reservationcomponent } from './components/reservationcomponent/reservationcomponent';
+import { ReservationList } from './components/reservationcomponent/reservation-list/reservation-list';
+import { ReservationInsert } from './components/reservationcomponent/reservation-insert/reservation-insert';
+import { ReservationUpdate } from './components/reservationcomponent/reservation-update/reservation-update';
+import { Favoritecomponent } from './components/favoritecomponent/favoritecomponent';
+import { FavoriteListar } from './components/favoritecomponent/favorite-listar/favorite-listar';
+import { FavoriteInsertar } from './components/favoritecomponent/favorite-insertar/favorite-insertar';
+
 export const routes: Routes = [
   {
     path: '',
@@ -24,9 +38,8 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-        path: 'login',
-        component: Authenticate,
-
+    path: 'login',
+    component: Authenticate,
   },
   {
     path: 'homes',
@@ -34,75 +47,111 @@ export const routes: Routes = [
     canActivate: [seguridadGuard]
   },
 
+  // --- CATEGORÍAS ---
   {
     path: 'categories',
     component: CategoryListComponent,
     canActivate: [seguridadGuard]
   },
-
   {
     path: 'categories/new',
     component: CategoryInsertComponent,
     canActivate: [seguridadGuard]
   },
-
-  {
-    path: 'categories/new',
-    component: CategoryInsertComponent,
-    canActivate: [seguridadGuard]
-  },
-
   {
     path: 'categories/edit/:id',
     component: Categoryupdate,
     canActivate: [seguridadGuard]
   },
 
+  // --- USUARIOS ---
   {
     path: 'usuario',
     component: Usuariocomponent,
     canActivate: [seguridadGuard],
     canActivateChild: [seguridadGuard],
     children: [
-      {
-        path: 'lista', component: UsuarioList
-      },
-      {
-        path: 'news',  component: UsuarioInsert
-      }
+      { path: 'lista', component: UsuarioList },
+      { path: 'news',  component: UsuarioInsert },
+      { path: 'edit/:id', component: Usuarioupdate }
     ]
   },
- 
+
+  // --- RESTAURANTES ---
   {
-  path:'restaurant',
-        component:Restaurantcomponent,
-        canActivate: [seguridadGuard],
-        canActivateChild: [seguridadGuard],
-        children:[
-            { path: 'news', component: Restaurantinsert },
-            { path: 'list', component: Restaurantlist },
-      ]
+    path: 'restaurant',
+    component: Restaurantcomponent,
+    canActivate: [seguridadGuard],
+    canActivateChild: [seguridadGuard],
+    children: [
+      { path: 'news', component: Restaurantinsert },
+      { path: 'list', component: Restaurantlist },
+      { path: 'edit/:id', component: Restaurantupdate }
+    ]
   },
+
+  // --- HORARIOS ---
   {
-  path:'schedules',
-        component:Schedulecomponent,
-        canActivate: [seguridadGuard],
-        canActivateChild: [seguridadGuard],
-        children:[
-            { path: 'news', component: Scheduleinsert },
-            { path: 'list', component: Schedulelist },
-      ]
+    path: 'schedules',
+    component: Schedulecomponent,
+    canActivate: [seguridadGuard],
+    canActivateChild: [seguridadGuard],
+    children: [
+      { path: 'news', component: Scheduleinsert },
+      { path: 'list', component: Schedulelist },
+    ]
   },
-   {
-  path:'tables',
-        component:Restauranttablecomponent,
-        canActivate: [seguridadGuard],
-        canActivateChild: [seguridadGuard],
-        children:[
-            { path: 'news', component: Restauranttableinsert },
-            { path: 'list', component: RestaurantTablelist },
-      ]
+
+  // --- MESAS ---
+  {
+    path: 'tables',
+    component: Restauranttablecomponent,
+    canActivate: [seguridadGuard],
+    canActivateChild: [seguridadGuard],
+    children: [
+      { path: 'news', component: Restauranttableinsert },
+      { path: 'list', component: RestaurantTablelist },
+    ]
   },
+
+  // --- RESEÑAS ---
+  {
+    path: 'reviews',
+    component: Reviewcomponent,
+    canActivate: [seguridadGuard],
+    canActivateChild: [seguridadGuard],
+    children: [
+      { path: 'list', component: ReviewListar },
+      { path: 'news', component: ReviewInsertar },
+      { path: 'edit/:id', component: ReviewUpdate }
+    ]
+  },
+
+  // --- RESERVAS ---
+  {
+    path: 'Reservas',
+    component: Reservationcomponent,
+    canActivate: [seguridadGuard],
+    canActivateChild: [seguridadGuard],
+    children: [
+      { path: 'list', component: ReservationList },
+      { path: 'news', component: ReservationInsert },
+      { path: 'edit/:id', component: ReservationUpdate }
+    ]
+  },
+
+  // --- FAVORITOS ---
+  {
+    path: 'favoritos',
+    component: Favoritecomponent,
+    canActivate: [seguridadGuard],
+    canActivateChild: [seguridadGuard],
+    children: [
+      { path: 'list', component: FavoriteListar },
+      { path: 'news', component: FavoriteInsertar },
+    ]
+  },
+
   // SIEMPRE AL FINAL
   {
     path: '**',
