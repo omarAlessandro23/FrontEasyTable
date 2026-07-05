@@ -30,6 +30,11 @@
       <mat-icon aria-hidden="false" aria-label="Example deck icon" fontIcon="deck"></mat-icon>
       Mesa
     </button>
+
+    <button mat-button class="btn-rojo" aria-label="Menu Reportes" [matMenuTriggerFor]="menuReportes">
+      <mat-icon aria-hidden="false" fontIcon="bar_chart"></mat-icon>
+      Reportes
+    </button>
   </mat-toolbar>
 
   <mat-menu #menuUsuario="matMenu">
@@ -63,4 +68,14 @@
     <button mat-menu-item routerLink="/tables/list"><mat-icon>list</mat-icon>Lista</button>
     <button mat-menu-item routerLink="/tables/edit/:id"><mat-icon>edit</mat-icon>Editar</button>
   </mat-menu>
+
+  <mat-menu #menuReportes="matMenu">
+    <button mat-menu-item routerLink="/reporte01">
+      <mat-icon>assessment</mat-icon>Categorías sin restaurantes
+    </button>
+    <button mat-menu-item routerLink="/reporte02">
+      <mat-icon>assessment</mat-icon>Mejores Calificados
+    </button>
+  </mat-menu>
+
 </div>

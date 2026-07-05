@@ -1,0 +1,61 @@
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo para las barras de herramientas */
+.custom-toolbar {
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    gap: 10px;
+    padding: 0 10px;
+    border-bottom: 2px solid #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo personalizado para tus botones rojos */
+.btn-rojo {
+    color: white !important;
+    background-color: #d72b04 !important;
+    /* Rojo intenso */
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-rojo:hover {
+    background-color: #a82203 !important;
+    /* Rojo más oscuro al pasar el ratón */
+}
+
+/* Estilo para el contenedor del gráfico */
+.report-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo para cuando no hay datos */
+.no-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #666;
+    padding: 40px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+}
+
+/* Ajustes para el canvas del gráfico */
+canvas {
+    max-width: 100%;
+}

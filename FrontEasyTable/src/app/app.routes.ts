@@ -19,6 +19,8 @@ import { Usuarioupdate } from './components/usuariocomponent/usuarioupdate/usuar
 import { Restaurantupdate } from './components/restaurantcomponent/restaurantupdate/restaurantupdate';
 import { Scheduleupdate } from './components/schedulecomponent/scheduleupdate/scheduleupdate';
 import { Restauranttableupdate } from './components/restauranttablecomponent/restauranttableupdate/restauranttableupdate';
+import { Reporte01 } from './components/reporte01/reporte01';
+import { Reporte02 } from './components/reporte02/reporte02';
 export const routes: Routes = [
   {
     path: '',
@@ -26,6 +28,14 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
 
+  {
+    path: 'reporte01',
+    component: Reporte01
+  },
+  {
+    path: 'reporte02',
+    component: Reporte02
+  },
   {
     path: 'homes',
     component: Homecomponent

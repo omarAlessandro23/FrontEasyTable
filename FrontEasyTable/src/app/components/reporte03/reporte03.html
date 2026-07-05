@@ -1,0 +1,25 @@
+<div class="report-container">
+    <h2>Reporte: Restaurantes Cercanos</h2>
+
+    <div class="filter-box">
+        <input type="number" [(ngModel)]="lat" placeholder="Latitud">
+        <input type="number" [(ngModel)]="lng" placeholder="Longitud">
+        <input type="number" [(ngModel)]="dist" placeholder="Distancia (km)">
+
+        <button (click)="cargarReporte()" class="btn-rojo">
+            Buscar Cercanos
+        </button>
+    </div>
+
+    @if (hasData) {
+    <div class="chart-wrapper">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [legend]="barChartLegend" [type]="barChartType">
+        </canvas>
+    </div>
+    } @else {
+    <div class="no-data">
+        <p>Ingresa tus coordenadas y distancia para buscar restaurantes.</p>
+    </div>
+    }
+</div>
