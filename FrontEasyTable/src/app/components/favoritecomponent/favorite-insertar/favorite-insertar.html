@@ -1,0 +1,47 @@
+<div class="container" style="padding: 20px;">
+  <h2>Añadir Restaurante a Favoritos</h2>
+
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="usuario">
+        <mat-option *ngFor="let user of listaUsuarios" [value]="user.idUsuario">
+          {{ user.username }} (ID: {{ user.idUsuario }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+        El usuario es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Restaurante</mat-label>
+      <mat-select formControlName="restaurante">
+        <mat-option *ngFor="let rest of listaRestaurantes" [value]="rest.restaurantid">
+          {{ rest.name }} (ID: {{ rest.restaurantid }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('restaurante')?.hasError('required')">
+        El restaurante es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Comentario (opcional)</mat-label>
+      <textarea matInput formControlName="comentario" rows="4" placeholder="¿Por qué lo añades a favoritos?"></textarea>
+      <mat-error *ngIf="form.get('comentario')?.hasError('maxlength')">
+        Máximo 500 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      <mat-icon>favorite</mat-icon> Añadir a Favoritos
+    </button>
+
+    <button mat-button type="button" routerLink="/favoritos/list" style="margin-left: 12px;">
+      <mat-icon>arrow_back</mat-icon> Cancelar
+    </button>
+
+  </form>
+</div>

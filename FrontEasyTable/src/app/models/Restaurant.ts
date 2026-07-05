@@ -7,6 +7,5 @@ export class Restaurant {
   googleMapsUrl: string = ''
   latitude: number = 0
   longitude: number = 0
-  nombreCategoria: string = ''
-    
+  idCategory: number = 0
 }

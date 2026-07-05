@@ -67,7 +67,7 @@ export class Restaurantinsert implements OnInit {
       this.restaurant.longitude = this.form.value.longitud;
       
       // Asignamos el valor de la categoría seleccionada (ej: el nombre o el ID según pida tu backend)
-      this.restaurant.nombreCategoria = this.form.value.categoria; 
+      this.restaurant.idCategory = this.form.value.categoria; 
 
       // Consumo del servicio para insertar
       this.rS.insert(this.restaurant).subscribe({

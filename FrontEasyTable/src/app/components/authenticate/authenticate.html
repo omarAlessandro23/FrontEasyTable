@@ -1,0 +1,17 @@
+<div class="container" style="text-align: center">
+  <div>
+    <img src="assets/logo.png" alt="Logo de la empresa" />
+  </div>
+  <h2>Inicie sesión</h2>
+  <mat-form-field class="example-full-width">
+    <mat-label>Usuario</mat-label>
+    <input matInput placeholder="Nombre" [(ngModel)]="nombre" />
+  </mat-form-field>
+  <br />
+  <mat-form-field class="example-full-width">
+    <mat-label>Contrasenia</mat-label>
+    <input type="contrasenia" matInput placeholder="Constrasenia" [(ngModel)]="contrasenia" />
+  </mat-form-field>
+  <br />
+  <button mat-raised-button  (click)="login()">Ingresar</button>
+</div>
