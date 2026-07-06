@@ -1,52 +1,241 @@
-.container {
-
- position: relative; /* Permite posicionar elementos dentro del contenedor */
-
- width: 80%;
-
- height: 80%;
-
- overflow: hidden; /* Esconde cualquier desbordamiento */
-
+/* Variables locales de diseño */
+:root {
+  --font-main: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-dark: #0F172A;
+  --color-gray: #566176;
+  --color-brand: #FF5A36; /* Un naranja/rojo vibrante que combina con tu navbar */
+  --bg-light: #F8FAFC;
 }
 
-.image {
-
- position: absolute; /* Permite que la imagen ocupe toda la pantalla */
-
- top: 50%;
-
- left: 50%;
-
- width: 80%; /* Ancho completo */
-
- height: auto; /* Mantiene la proporción */
-
- min-height: 80%; /* Asegura que cubra toda la altura */
-
- transform: translate(-50%, -50%); /* Centra la imagen */
-
+.home-container {
+  font-family: var(--font-main);
+  background-color: #F8FAFC;
+  color: #0F172A;
+  padding: 0 4%;
+  min-height: calc(100vh - 60px);
 }
 
-.text {
-
- position: absolute;
-
- bottom: 20px; /* Distancia desde el fondo */
-
- left: 50%;
-
- transform: translateX(-50%); /* Centra horizontalmente el texto */
-
- color: white; /* Color del texto */
-
- text-align: center; /* Centra el texto */
-
- background-color: rgba(46, 37, 178, 0.5); /* Fondo semi-transparente */
-
- padding: 10px; /* Espaciado interno */
-
- border-radius: 5px; /* Esquinas redondeadas */
-
+/* --- HERO SECTION --- */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0;
 }
 
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+  color: #566176;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  max-width: 550px;
+}
+
+/* Buscador Moderno */
+.search-capsule {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 0.6rem 0.8rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+}
+
+.search-icon {
+  margin-left: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.search-capsule input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 1rem;
+  font-size: 0.95rem;
+}
+
+.btn-search {
+  background: #FF5A36;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-search:hover {
+  opacity: 0.9;
+}
+
+.hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+}
+
+/* --- SECCIÓN RESTAURANTES --- */
+.tendencias-section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.restaurant-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer; /* 👈 Esto hará que el mouse se convierta en una manito al pasar sobre la tarjeta */
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px rgba(15, 23, 42, 0.08);
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 220px;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-tag.gourmet { background: #FFEFEB; color: #FF5A36; }
+.card-tag.carnes { background: #EFFFEC; color: #22C55E; }
+.card-tag.marinos { background: #EBF5FF; color: #3B82F6; }
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  color: #566176;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.card-meta {
+  font-size: 0.85rem;
+  color: #0F172A;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.btn-reserve {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #E2E8F0;
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-reserve:hover {
+  background: #0F172A;
+  color: white;
+  border-color: #0F172A;
+}
+
+/* --- SECCIÓN CARACTERÍSTICAS --- */
+.features-section {
+  padding: 4rem 0 6rem 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.03);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.home-container {
+  background-color: #F8FAFC !important; /* El !important tapa el fondo oscuro del restaurante solo en la landing */
+  position: relative;
+  min-height: calc(100vh - 64px);
+  width: 100%;
+}
+
+.feature-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  color: #566176;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Responsive para celulares */
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .hero-text h1 { font-size: 2.4rem; }
+  .hero-text p { margin: 0 auto 2rem auto; }
+  .hero-image-container { display: none; }
+}

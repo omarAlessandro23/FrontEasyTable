@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { Landing } from './components/landing/landing';
 import { CategoryInsertComponent } from './components/category/categoryinsert/categoryinsert';
 import { CategoryListComponent } from './components/category/categorylist/categorylist';
 import { Homecomponent } from './components/homecomponent/homecomponent';
@@ -39,7 +40,7 @@ import { Reporte03 } from './components/reporte03/reporte03';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    component: Landing,
     pathMatch: 'full'
   },
   {

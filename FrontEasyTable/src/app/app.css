@@ -1,0 +1,29 @@
+/* Este contenedor envolverá de forma automática a todas las vistas del menú */
+.menu-content-container {
+  min-height: calc(100vh - 64px); /* Resta la altura aproximada de tu barra roja */
+  width: 100%;
+  
+  /* Imagen de fondo de restaurante con un velo oscuro encima */
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                    url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Hace que el fondo se quede quieto al hacer scroll */
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+/* Opcional: Una clase global por si quieres que tus formularios floten en tarjetas tipo cristal */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin: 2rem;
+  display: inline-block; /* Se ajusta al tamaño de tu contenido */
+}

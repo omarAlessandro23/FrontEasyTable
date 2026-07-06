@@ -36,7 +36,7 @@ export class Reporte01 implements OnInit {
           this.barChartData = [
             {
               data: data.map(() => 1),
-              label: 'Categorías sin restaurantes',
+              label: 'Categorías con restaurantes',
               backgroundColor: [
                 '#42A5F5', '#66BB6A', '#FFA726', '#AB47BC',
                 '#EC407A', '#26C6DA', '#FF7043', '#8D6E63'

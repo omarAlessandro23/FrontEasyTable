@@ -37,6 +37,11 @@
         Reportes
        </button>
 
+        <button mat-button [matMenuTriggerFor]="menuHome">
+      <mat-icon>home</mat-icon>
+        Home
+       </button>
+
       <span class="spacer" style="flex: 1 1 auto;"></span>
 
       <button mat-button [matMenuTriggerFor]="menuSalir">
@@ -103,6 +108,10 @@
       <mat-icon>assessment</mat-icon>Restaurantes Cercanos
     </button>
 </mat-menu>
+
+<mat-menu #menuHome="matMenu">
+    <button mat-menu-item routerLink="homes"><mat-icon>Home</mat-icon>Principal</button>
+  </mat-menu>
 
   <mat-menu #menuSalir="matMenu">
     <button mat-menu-item (click)="cerrar()">

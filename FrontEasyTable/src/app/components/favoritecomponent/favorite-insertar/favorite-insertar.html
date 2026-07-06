@@ -1,47 +1,53 @@
-<div class="container" style="padding: 20px;">
-  <h2>Añadir Restaurante a Favoritos</h2>
+<div class="fav-container">
+  <div class="fav-card">
+    <h2>Añadir Restaurante a Favoritos</h2>
 
-  <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="fav-form">
+      
+      <div class="form-grid">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="usuario">
+            <mat-option *ngFor="let user of listaUsuarios" [value]="user.idUsuario">
+              {{ user.username }} (ID: {{ user.idUsuario }})
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+            El usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Usuario</mat-label>
-      <mat-select formControlName="usuario">
-        <mat-option *ngFor="let user of listaUsuarios" [value]="user.idUsuario">
-          {{ user.username }} (ID: {{ user.idUsuario }})
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('usuario')?.hasError('required')">
-        El usuario es obligatorio
-      </mat-error>
-    </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Restaurante</mat-label>
+          <mat-select formControlName="restaurantid">
+            <mat-option *ngFor="let rest of listaRestaurantes" [value]="rest.id">
+              {{ rest.name }} (ID: {{ rest.id }})
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('restaurantid')?.hasError('required')">
+            El restaurante es obligatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-  <mat-form-field appearance="outline" class="w-100">
-  <mat-label>Restaurante</mat-label>
-  <mat-select formControlName="restaurantid">
-    <mat-option *ngFor="let rest of listaRestaurantes" [value]="rest.id">
-      {{ rest.name }} (ID: {{ rest.id }})
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="form.get('restaurantid')?.hasError('required')">
-    El restaurante es obligatorio
-  </mat-error>
-</mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Comentario (opcional)</mat-label>
+        <textarea matInput formControlName="comentario" rows="4" placeholder="¿Por qué lo añades a favoritos?"></textarea>
+        <mat-error *ngIf="form.get('comentario')?.hasError('maxlength')">
+          Máximo 500 caracteres
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Comentario (opcional)</mat-label>
-      <textarea matInput formControlName="comentario" rows="4" placeholder="¿Por qué lo añades a favoritos?"></textarea>
-      <mat-error *ngIf="form.get('comentario')?.hasError('maxlength')">
-        Máximo 500 caracteres
-      </mat-error>
-    </mat-form-field>
+      <div class="action-buttons">
+        <button mat-button type="button" routerLink="/favoritos/list" class="btn-cancelar">
+          <mat-icon>arrow_back</mat-icon> Cancelar
+        </button>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-      <mat-icon>favorite</mat-icon> Añadir a Favoritos
-    </button>
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-guardar">
+          <mat-icon>favorite</mat-icon> Añadir a Favoritos
+        </button>
+      </div>
 
-    <button mat-button type="button" routerLink="/favoritos/list" style="margin-left: 12px;">
-      <mat-icon>arrow_back</mat-icon> Cancelar
-    </button>
-
-  </form>
+    </form>
+  </div>
 </div>

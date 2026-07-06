@@ -1,25 +1,32 @@
 <div class="report-container">
-    <h2>Reporte: Restaurantes Cercanos</h2>
+  <h2>Reporte: Restaurantes Cercanos</h2>
 
-    <div class="filter-box">
-        <input type="number" [(ngModel)]="lat" placeholder="Latitud">
-        <input type="number" [(ngModel)]="lng" placeholder="Longitud">
-        <input type="number" [(ngModel)]="dist" placeholder="Distancia (km)">
+  <div class="filter-box" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+    <input type="number" [(ngModel)]="latInput" placeholder="Latitud" step="0.01" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="number" [(ngModel)]="lngInput" placeholder="Longitud" step="0.01" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="number" [(ngModel)]="distInput" placeholder="Distancia (km)" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
 
-        <button (click)="cargarReporte()" class="btn-rojo">
-            Buscar Cercanos
-        </button>
-    </div>
+    <button (click)="cargarReporte()" class="btn-rojo" style="background-color: #FF5A36; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">
+      Buscar Cercanos
+    </button>
+  </div>
 
-    @if (hasData) {
-    <div class="chart-wrapper">
-        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-            [legend]="barChartLegend" [type]="barChartType">
-        </canvas>
+  @if (hasData) {
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      @for (restaurante of listaRestaurantes; track restaurante.restaurantid) {
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <h3 style="color: #0F172A; margin-bottom: 8px;">{{ restaurante.name }}</h3>
+          <p style="color: #566176; font-size: 0.95rem; margin-bottom: 12px;">📍 {{ restaurante.address }}</p>
+          
+          <span style="background: rgba(255, 90, 54, 0.1); color: #FF5A36; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">
+            Disponible para Reserva
+          </span>
+        </div>
+      }
     </div>
-    } @else {
-    <div class="no-data">
-        <p>Ingresa tus coordenadas y distancia para buscar restaurantes.</p>
+  } @else {
+    <div class="no-data" style="text-align: center; padding: 40px; border: 2px dashed #ccc; border-radius: 8px;">
+      <p>Ingresa tus coordenadas y distancia para buscar restaurantes.</p>
     </div>
-    }
+  }
 </div>

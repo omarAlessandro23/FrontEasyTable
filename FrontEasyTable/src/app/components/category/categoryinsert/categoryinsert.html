@@ -1,21 +1,16 @@
-<form (ngSubmit)="saveCategory()">
-
-  <mat-form-field appearance="outline">
-    <mat-label>Nombre de la categoría</mat-label>
-    <input
-      matInput
-      name="nombreCategoria"
-      [(ngModel)]="newCategory.nombreCategoria"
-      required
-    />
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit">
-    Guardar
-  </button>
-
-</form>
-
-<div *ngIf="message">
-  {{ message }}
+<div class="form-container">
+  <div class="form-card">
+    <h2>Registrar Categoría</h2>
+    
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre de la categoría</mat-label>
+        <input matInput placeholder="Ej. Comida Marina" />
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" class="btn-guardar">
+        Guardar
+      </button>
+    </div>
+  </div>
 </div>

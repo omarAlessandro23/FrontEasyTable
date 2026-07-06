@@ -1,0 +1,106 @@
+/* Centra todo el contenido vertical y horizontalmente en la pantalla */
+.fav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 75px); /* Espacio debajo de tu menú rojo */
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Cuadro Blanco (Tarjeta que bloquea el fondo oscuro) */
+.fav-card {
+  background: #FFFFFF !important;
+  padding: 3rem 2.5rem;
+  border-radius: 20px; /* Consistencia con tu landing */
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); /* Sombra suave para dar profundidad */
+  width: 100%;
+  max-width: 680px; /* Ancho ideal para un formulario balanceado */
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+/* Título Premium */
+.fav-card h2 {
+  color: #0F172A; /* Slate oscuro de EasyTable */
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 2.25rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* Espaciado del formulario */
+.fav-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Grid para responsive: inputs en paralelo */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* --- INTERRUPCIÓN DE ESTILOS DE ANGULAR MATERIAL DENTRO DE LA TARJETA --- */
+/* Forzamos que los textos sean legibles y los inputs tengan fondo limpio */
+::v-deep .mat-mdc-text-field-wrapper {
+  background-color: #F8FAFC !important; /* Gris ultra claro */
+}
+
+::v-deep .mat-mdc-form-field-label {
+  color: #566176 !important;
+}
+
+/* --- CONTENEDOR DE BOTONES --- */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end; /* Alineados a la derecha */
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Botón Añadir (Naranja EasyTable) */
+.btn-guardar {
+  background-color: #FF5A36 !important; /* Tu color insignia */
+  color: #FFFFFF !important;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 12px;
+  height: 48px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.btn-guardar:not(:disabled):hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+/* Cuando el botón está deshabilitado por el formulario inválido */
+.btn-guardar:disabled {
+  background-color: #E2E8F0 !important;
+  color: #94A3B8 !important;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+  color: #566176 !important;
+  font-weight: 500;
+  height: 48px;
+  padding: 0 1.25rem;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+  color: #0F172A !important;
+}

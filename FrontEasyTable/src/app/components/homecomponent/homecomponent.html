@@ -1,11 +1,103 @@
-<div class="container">
+<main class="home-container">
+  <!-- Sección Hero / Bienvenida -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>Reserva una mesa en los mejores lugares.</h1>
+      <p>Descubre propuestas gastronómicas increíbles, explora menús en tiempo real y asegura tu lugar en menos de un minuto.</p>
+      
+      <div class="search-capsule">
+        <i class="search-icon">🔍</i>
+        <!-- Corrección: Aseguramos el correcto cierre del input con /> al final -->
+        <input 
+          #txtBuscar
+          type="text" 
+          placeholder="¿Qué se te antoja comer hoy? (Ej: Bistro, Parrillas, Marino...)"
+          (keyup.enter)="buscarRestaurante(txtBuscar.value)" />
+        
+        <button class="btn-search" (click)="buscarRestaurante(txtBuscar.value)">Buscar</button>
+      </div>
+    </div>
+    
+    <div class="hero-image-container">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Restaurante Moderno" class="hero-img">
+    </div>
+  </section>
+  <!-- Sección de Tendencias (Restaurantes) -->
+  <section class="tendencias-section">
+    <h2 class="section-title">Tendencias de la semana 🔥</h2>
+    
+    <div class="restaurant-grid">
+      
+      <!-- Tarjeta 1: Bistro Citre -->
+      <div class="restaurant-card" [routerLink]="['/reservas']" [queryParams]="{ restauranteId: 'bistro-citre' }">
+        <div class="card-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bistro Citre" class="card-img">
+          <span class="card-tag gourmet">Gourmet</span>
+        </div>
+        <div class="card-content">
+          <h3>Bistro Citre</h3>
+          <p class="card-description">Comida peruana tradicional y fusión. Ambiente íntimo y exclusivo.</p>
+          <div class="card-meta">
+            <span>🕒 Cierra 00:00 a.m.</span>
+          </div>
+          <button class="btn-reserve">Ver Disponibilidad</button>
+        </div>
+      </div>
 
-    <img src="logo.png" alt="Imagen 1" class="image" />
+      <!-- Tarjeta 2: La Parrilla de VES -->
+      <div class="restaurant-card" [routerLink]="['/reservas']" [queryParams]="{ restauranteId: 'parrilla-ves' }">
+        <div class="card-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="La Parrilla de VES" class="card-img">
+          <span class="card-tag carnes">Carnes</span>
+        </div>
+        <div class="card-content">
+          <h3>La Parrilla de VES</h3>
+          <p class="card-description">Las mejores brasas artesanales y cortes finos seleccionados en Villa el Salvador.</p>
+          <div class="card-meta">
+            <span>🕒 Cierra 23:00 p.m.</span>
+          </div>
+          <button class="btn-reserve">Ver Disponibilidad</button>
+        </div>
+      </div>
 
-    <div class="text">
-
-        <p>Angular: Un framework para construir aplicaciones web de una sola página.</p>
+      <!-- Tarjeta 3: La Mar Premium -->
+      <div class="restaurant-card" [routerLink]="['/reservas']" [queryParams]="{ restauranteId: 'la-mar' }">
+        <div class="card-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="La Mar" class="card-img">
+          <span class="card-tag marinos">Marinos</span>
+        </div>
+        <div class="card-content">
+          <h3>La Mar Premium</h3>
+          <p class="card-description">Frescura marina incomparable en un formato de alta cocina de autor.</p>
+          <div class="card-meta">
+            <span>🕒 Cierra 17:00 p.m.</span>
+          </div>
+          <button class="btn-reserve">Ver Disponibilidad</button>
+        </div>
+      </div>
 
     </div>
+  </section>
 
-</div>
+  <!-- Sección de Beneficios -->
+  <section class="features-section">
+    <h2 class="section-title">¿Por qué reservar con EasyTable?</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <h3>Reservas Inmediatas</h3>
+        <p>Sin llamadas molestas ni esperas eternas. Confirmación garantizada en tiempo real.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👥</div>
+        <h3>Dividir Cuentas</h3>
+        <p>Planifica con tus amigos y divide los gastos de la mesa de manera justa y transparente.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⭐</div>
+        <h3>Opiniones Reales</h3>
+        <p>Calificaciones y reseñas auténticas de comensales que ya visitaron el local.</p>
+      </div>
+    </div>
+  </section>
+</main>

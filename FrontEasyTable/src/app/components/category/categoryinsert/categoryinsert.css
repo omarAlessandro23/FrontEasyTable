@@ -1,0 +1,60 @@
+/* Contenedor principal que ocupa todo el espacio disponible y centra su contenido */
+.form-container {
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center;     /* Centrado vertical */
+  min-height: calc(100vh - 90px); /* Ajuste dinámico debajo de tu barra roja */
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Tarjeta blanca estilizada al medio (Cuadro blanco) */
+.form-card {
+  background: rgba(255, 255, 255, 0.96); /* Blanco casi sólido muy limpio */
+  backdrop-filter: blur(8px);           /* Sutil difuminado de fondo */
+  padding: 3rem 2.5rem;
+  border-radius: 16px;                  /* Esquinas suaves y modernas */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Sombra pronunciada para dar profundidad */
+  width: 100%;
+  max-width: 500px;                     /* Ancho ideal para que no se estire demasiado */
+  text-align: center;
+}
+
+/* Título de la tarjeta */
+.form-card h2 {
+  color: #0F172A;                       /* Color slate oscuro idéntico a tu paleta */
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+}
+
+/* Distribución de los campos */
+.form-fields {
+  display: flex;
+  flex-direction: column;               /* Los elementos irán uno debajo de otro */
+  gap: 1.25rem;                         /* Espaciado uniforme */
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Estilizado del botón guardar */
+.btn-guardar {
+  background-color: #FF5A36 !important;  /* Tu naranja de marca EasyTable */
+  color: white !important;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  height: 50px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-guardar:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
