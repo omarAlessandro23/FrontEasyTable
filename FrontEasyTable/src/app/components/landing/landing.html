@@ -8,9 +8,13 @@
             <li><a href="#nosotros">Nosotros</a></li>
         </ul>
     </nav>
-    <button class="btn-login" routerLink="/login">Iniciar Sesión</button>
+    
+    <!-- Envolvemos ambos botones aquí -->
+    <div class="auth-buttons">
+        <button class="btn-login" routerLink="/login">Iniciar Sesión</button>
+        <button class="btn-login" routerLink="/usuario/news">Registrarse</button>
+    </div>
 </header>
-
 <section id="inicio" class="hero-section">
     <div class="hero-text">
         <h1>Reserva mesas en los mejores lugares.</h1>

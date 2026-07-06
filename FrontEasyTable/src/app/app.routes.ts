@@ -74,8 +74,6 @@ export const routes: Routes = [
   {
     path: 'usuario',
     component: Usuariocomponent,
-    canActivate: [seguridadGuard],
-    canActivateChild: [seguridadGuard],
     children: [
       { path: 'lista', component: UsuarioList },
       { path: 'news',  component: UsuarioInsert },

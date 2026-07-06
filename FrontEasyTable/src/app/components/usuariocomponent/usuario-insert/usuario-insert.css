@@ -1,0 +1,76 @@
+/* Contenedor principal que centra la tarjeta en la pantalla */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Título principal */
+h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Tarjeta del formulario */
+form {
+    background: #fdfdfd;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Sombra suave avanzada */
+    max-width: 650px;
+    width: 100%;
+    box-sizing: border-box;
+
+    /* Activamos CSS Grid para acomodar los inputs de forma inteligente */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Crea dos columnas iguales */
+    gap: 15px 20px; /* Espaciado entre inputs (arriba/abajo - izquierda/derecha) */
+}
+
+/* Forzar que ciertos campos ocupen todo el ancho completo (Ambas columnas) */
+mat-form-field.example-full-width,
+form > div:last-child {
+    grid-column: span 2; 
+}
+
+/* Ajustes individuales para Angular Material */
+mat-form-field {
+    width: 100%; /* Asegura que el input use todo su espacio asignado */
+}
+
+/* Contenedor de botones (Registrar y Cancelar) */
+form > div:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre el botón azul y el rojo */
+    margin-top: 25px;
+}
+
+/* Estilos de botones para darles un toque más moderno */
+button[mat-raised-button] {
+    padding: 10px 25px !important;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 6px !important;
+    letter-spacing: 0.5px;
+}
+
+/* --- RESPONSIVO --- */
+/* Si se ve desde un celular, todo vuelve a una sola columna */
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    mat-form-field.example-full-width,
+    form > div:last-child {
+        grid-column: span 1;
+    }
+}
