@@ -1,82 +1,118 @@
 <div class="container">
+  @if (verificar()) {
+    <mat-toolbar class="custom-toolbar">
+      
+      <button mat-button class="btn-rojo" aria-label="Menu Categoria" [matMenuTriggerFor]="menuCurso">
+        <mat-icon aria-hidden="false" fontIcon="label"></mat-icon>
+        Categoria
+      </button>
 
- <mat-toolbar class="custom-toolbar">
-  <button
-   matButton
-   class="btn-rojo"
-   aria-label="Example icon-button with menu icon"
-   [matMenuTriggerFor]="menuCurso"
-  >
-  <mat-icon aria-hidden="false" aria-label="Example label icon" fontIcon="label"></mat-icon>
-  Categoria
+      <button mat-button class="btn-rojo" aria-label="Menu Restaurant" [matMenuTriggerFor]="menuRestaurant">
+        <mat-icon aria-hidden="false" fontIcon="dining"></mat-icon>
+        Restaurante
+      </button>
+
+      <button mat-button class="btn-rojo" aria-label="Menu Horario" [matMenuTriggerFor]="menuSchedule">
+        <mat-icon aria-hidden="false" fontIcon="schedule"></mat-icon>
+        Horario
+      </button>
+
+      <button mat-button class="btn-rojo" aria-label="Menu Reseñas" [matMenuTriggerFor]="menuReview">
+        <mat-icon aria-hidden="false" fontIcon="star"></mat-icon>
+        Reseñas
+      </button>
+
+      <button mat-button class="btn-rojo" aria-label="Menu Reservas" [matMenuTriggerFor]="menuReservation">
+        <mat-icon aria-hidden="false" fontIcon="book_online"></mat-icon>
+        Reservas
+      </button>
+
+      <button mat-button class="btn-rojo" aria-label="Menu Favoritos" [matMenuTriggerFor]="menuFavorite">
+        <mat-icon aria-hidden="false" fontIcon="favorite"></mat-icon>
+        Favoritos
+      </button>
+
+      <button mat-button [matMenuTriggerFor]="menuReportes">
+      <mat-icon>assessment</mat-icon>
+        Reportes
+       </button>
+
+      <span class="spacer" style="flex: 1 1 auto;"></span>
+
+      <button mat-button [matMenuTriggerFor]="menuSalir">
+        <mat-icon>person</mat-icon>
+        Usuario
+      </button>
+
+      
+
+    </mat-toolbar>
+  }
+
+  <mat-menu #menuCurso="matMenu">
+    <button mat-menu-item routerLink="/categories"><mat-icon>list</mat-icon>Lista</button>
+    @if (isAdmin() || isOwner()) { 
+      <button mat-menu-item routerLink="/categories/new"><mat-icon>add</mat-icon>Registrar</button> 
+    }
+  </mat-menu>
+
+  <mat-menu #menuRestaurant="matMenu">
+    <button mat-menu-item routerLink="/restaurant/list"><mat-icon>list</mat-icon>Lista</button>
+    @if (isAdmin() || isOwner()) { 
+      <button mat-menu-item routerLink="/restaurant/news"><mat-icon>add</mat-icon>Registrar</button> 
+    }
+  </mat-menu>
+
+  <mat-menu #menuSchedule="matMenu">
+    <button mat-menu-item routerLink="/schedules/list"><mat-icon>list</mat-icon>Lista</button>
+    <button mat-menu-item routerLink="/schedules/news"><mat-icon>add</mat-icon>Registrar</button>
+  </mat-menu>
+
+  <mat-menu #menuReview="matMenu">
+    <button mat-menu-item routerLink="/reviews/list"><mat-icon>list</mat-icon>Lista</button>
+    <button mat-menu-item routerLink="/reviews/news"><mat-icon>add</mat-icon>Registrar</button>
+  </mat-menu>
+
+  <mat-menu #menuReservation="matMenu">
+    <button mat-menu-item routerLink="/Reservas/list"><mat-icon>list</mat-icon>Lista</button>
+    <button mat-menu-item routerLink="/Reservas/news"><mat-icon>add</mat-icon>Registrar</button>
+  </mat-menu>
+
+  <mat-menu #menuFavorite="matMenu">
+    <button mat-menu-item routerLink="/favoritos/list"><mat-icon>list</mat-icon>Lista</button>
+    @if (isAdmin() || isUser()) { 
+      <button mat-menu-item routerLink="/favoritos/news"><mat-icon>add</mat-icon>Registrar</button> 
+    }
+  </mat-menu>
+  <mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportesreview">
+    <mat-icon>star</mat-icon>
+    <span>Promedio por Restaurante</span>
   </button>
- </mat-toolbar>
-
-
-  <mat-toolbar class="custom-toolbar">
-  <button
-   matButton
-   class="btn-rojo"
-   aria-label="Example icon-button with menu icon"
-   [matMenuTriggerFor]="menuUsuario"
-  >
-  <mat-icon aria-hidden="false" aria-label="Example person icon" fontIcon="person"></mat-icon>
-  Usuario
+  <button mat-menu-item routerLink="/rankingfavoritos">
+    <mat-icon>assessment</mat-icon>
+    <span>Ranking de Favoritos</span>
   </button>
+  <button mat-menu-item routerLink="/reporte01">
+      <mat-icon>assessment</mat-icon>Categorías sin restaurantes
+    </button>
+    <button mat-menu-item routerLink="/reporte02">
+      <mat-icon>star</mat-icon>Mejores Calificados
+    </button>
+    <button mat-menu-item routerLink="/reporte03">
+      <mat-icon>assessment</mat-icon>Restaurantes Cercanos
+    </button>
+</mat-menu>
 
-  <button
-      mat-button
-      class="btn-rojo"
-      aria-label="Menu Restaurant"
-      [matMenuTriggerFor]="menuRestaurant"
-    >
-      <mat-icon aria-hidden="false" aria-label="Example dining  icon" fontIcon="dining "></mat-icon>
-  Restaurante
-  </button>
+  <mat-menu #menuSalir="matMenu">
+    <button mat-menu-item (click)="cerrar()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>verified_user</mat-icon>
+      <span>Rol: {{ role }}</span>
+    </button>
+  </mat-menu>
 
-    <button
-   matButton
-   class="btn-rojo"
-   aria-label="Example icon-button with menu icon"
-   [matMenuTriggerFor]="menuSchedule"
-  >
-  <mat-icon aria-hidden="false" aria-label="Example schedule  icon" fontIcon="schedule "></mat-icon>
-  Horario
-  </button>
-
-   <button
-   matButton
-   class="btn-rojo"
-   aria-label="Example icon-button with menu icon"
-   [matMenuTriggerFor]="menuTable"
-  >
-  <mat-icon aria-hidden="false" aria-label="Example deck icon" fontIcon="deck"></mat-icon>
-  Mesa
-  </button>
- </mat-toolbar>
-
-  <mat-menu #menuUsuario="matMenu">
-        <button mat-menu-item routerLink="/usuario/news"><mat-icon>add</mat-icon>Registrar</button>
-        <button mat-menu-item routerLink="/usuario/lista"><mat-icon>list</mat-icon>Lista</button>
-    </mat-menu>
-
-    <mat-menu #menuRestaurant="matMenu">
-      <button mat-menu-item routerLink="/restaurant/news"><mat-icon>add</mat-icon>Registrar</button>
-      <button mat-menu-item routerLink="/restaurant/list"><mat-icon>list</mat-icon>Lista</button>
-    </mat-menu>
-
-     <mat-menu #menuCurso="matMenu">
-  <button mat-menu-item routerLink="categories/new"><mat-icon>add</mat-icon>Registrar</button>
-  <button mat-menu-item routerLink="categories"><mat-icon>list</mat-icon>Lista</button>
- </mat-menu>
-
- <mat-menu #menuSchedule="matMenu">
-      <button mat-menu-item routerLink="/schedules/news"><mat-icon>add</mat-icon>Registrar</button>
-      <button mat-menu-item routerLink="/schedules/list"><mat-icon>list</mat-icon>Lista</button>
-    </mat-menu>
-
-    <mat-menu #menuTable="matMenu">
-      <button mat-menu-item routerLink="/tables/news"><mat-icon>add</mat-icon>Registrar</button>
-      <button mat-menu-item routerLink="/tables/list"><mat-icon>list</mat-icon>Lista</button>
-    </mat-menu>
 </div>

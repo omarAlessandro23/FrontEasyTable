@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject } from
 import { isPlatformBrowser } from '@angular/common';
 import { Restaurant } from '../../../models/Restaurant';
 import { Restaurantservice } from '../../../services/restaurantservice';
+import { Loginservice } from '../../../services/loginservice'; // 1. Importamos tu servicio de Login
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,6 +33,7 @@ declare const google: any;
 export class Restaurantlist implements OnInit, AfterViewInit, OnDestroy {
   dataSource: MatTableDataSource<Restaurant> = new MatTableDataSource();
   restaurantes: Restaurant[] = [];
+  role: string = ''; // 2. Propiedad para almacenar el rol actual
 
   // Google Maps
   map: any = null;
@@ -60,17 +62,34 @@ export class Restaurantlist implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private rS: Restaurantservice,
+    private loginService: Loginservice, // 3. Inyectamos el Loginservice
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+    // 4. Obtenemos el rol actual al inicializar el componente
+    this.role = this.loginService.showRole() ?? '';
+
     this.cargarRestaurantes();
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.cargarRestaurantes();
       }
     });
+  }
+
+  // 5. Métodos de control de roles requeridos por el HTML
+  isAdmin(): boolean {
+    return this.role === 'ROLE_ADMIN';
+  }
+
+  isOwner(): boolean {
+    return this.role === 'ROLE_OWNER';
+  }
+
+  isUser(): boolean {
+    return this.role === 'ROLE_USER';
   }
 
   ngAfterViewInit(): void {
@@ -84,17 +103,26 @@ export class Restaurantlist implements OnInit, AfterViewInit, OnDestroy {
   }
 
   cargarRestaurantes() {
-    this.rS.list().subscribe({
-      next: (data: Restaurant[]) => {
-        this.restaurantes = data;
-        this.dataSource.data = data;
-        if (this.mapsLoaded && this.map) {
-          this.placemarkers(data);
-        }
-      },
-      error: (err: unknown) => console.error('Error al cargar restaurantes', err),
-    });
-  }
+  // REFUERZO: Volvemos a leer el rol justo cuando se solicita o refresca la lista
+  const rolActual = this.loginService.showRole();
+  this.role = rolActual ? rolActual.toUpperCase().trim() : '';
+
+  this.rS.list().subscribe({
+    next: (data: Restaurant[]) => {
+      this.restaurantes = data;
+      this.dataSource.data = data;
+      
+      // Una vez que los datos llegan, aseguramos que el rol esté actualizado antes de pintar los renglones
+      const rolPostCarga = this.loginService.showRole();
+      this.role = rolPostCarga ? rolPostCarga.toUpperCase().trim() : '';
+
+      if (this.mapsLoaded && this.map) {
+        this.placemarkers(data);
+      }
+    },
+    error: (err: unknown) => console.error('Error al cargar restaurantes', err),
+  });
+}
 
   eliminar(id: number) {
     this.rS.delete(id).subscribe(() => {
@@ -146,7 +174,6 @@ export class Restaurantlist implements OnInit, AfterViewInit, OnDestroy {
   }
 
   placemarkers(restaurants: Restaurant[]) {
-    // Limpiar marcadores previos
     this.markers.forEach((m) => m.setMap(null));
     this.markers = [];
 
@@ -229,7 +256,7 @@ Si ninguno coincide, devuelve: []
 
     try {
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${environment.geminiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${environment.geminiKey}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

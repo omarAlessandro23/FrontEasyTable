@@ -15,17 +15,17 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Restaurante</mat-label>
-      <mat-select formControlName="restaurante">
-        <mat-option *ngFor="let rest of listaRestaurantes" [value]="rest.restaurantid">
-          {{ rest.name }} (ID: {{ rest.restaurantid }})
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('restaurante')?.hasError('required')">
-        El restaurante es obligatorio
-      </mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="w-100">
+  <mat-label>Restaurante</mat-label>
+  <mat-select formControlName="restaurantid">
+    <mat-option *ngFor="let rest of listaRestaurantes" [value]="rest.id">
+      {{ rest.name }} (ID: {{ rest.id }})
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="form.get('restaurantid')?.hasError('required')">
+    El restaurante es obligatorio
+  </mat-error>
+</mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Comentario (opcional)</mat-label>

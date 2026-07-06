@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Restaurant } from '../models/Restaurant';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const base_url = environment.base;
 
@@ -27,4 +28,15 @@ export class Restaurantservice {
   update(id: number, Restaurant: Restaurant) {
       return this.http.put<Restaurant>(`${this.url}/${id}`, Restaurant);
     }
+  getTopRated(rating: number): Observable<Restaurant[]> {
+    const params = new HttpParams().set('rating', rating.toString());
+    return this.http.get<Restaurant[]>(`${this.url}/mejoresCalificados`, { params });
+  }
+  getNearbyRestaurants(lat: number, lng: number, dist: number): Observable<Restaurant[]> {
+  const params = new HttpParams()
+    .set('lat', lat.toString())
+    .set('lng', lng.toString())
+    .set('dist', dist.toString());
+    
+  return this.http.get<Restaurant[]>(`${this.url}/cercanos`, { params });}
 }

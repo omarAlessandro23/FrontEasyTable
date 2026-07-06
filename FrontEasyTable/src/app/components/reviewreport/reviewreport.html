@@ -1,0 +1,42 @@
+<div class="report-container">
+  <h2>📊 Reporte de Calificaciones por Restaurante</h2>
+  <p class="subtitle">Promedio de puntuaciones obtenidas basado en las reseñas de los usuarios.</p>
+
+  <div *ngIf="isLoading" class="loading-state">
+    <p>Cargando datos del reporte...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-state">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage" class="table-responsive">
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Restaurante</th>
+          <th>Promedio de Calificación</th>
+          <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of reports">
+          <td class="restaurant-name">{{ item.restaurante }}</td>
+          <td class="rating-value">{{ item.promedio | number:'1.1-2' }} ⭐</td>
+          <td>
+            <span class="badge" [ngClass]="{
+              'high': item.promedio >= 4,
+              'medium': item.promedio >= 3 && item.promedio < 4,
+              'low': item.promedio < 3
+            }">
+              {{ item.promedio >= 4 ? 'Excelente' : item.promedio >= 3 ? 'Aceptable' : 'Bajo' }}
+            </span>
+          </td>
+        </tr>
+        <tr *ngIf="reports.length === 0">
+          <td colspan="3" class="no-data">No se encontraron registros de reseñas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

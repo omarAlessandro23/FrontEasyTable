@@ -1,0 +1,16 @@
+<div class="report-container">
+    <h2>Reporte: Categorías sin restaurantes</h2>
+
+    @if (hasData) {
+    <div style="display: block; width: 100%; height: 400px;">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [legend]="barChartLegend" [type]="barChartType">
+        </canvas>
+    </div>
+    } @else {
+    <div class="no-data">
+        <mat-icon>info</mat-icon>
+        <p>No se encontraron datos para mostrar en el reporte.</p>
+    </div>
+    }
+</div>

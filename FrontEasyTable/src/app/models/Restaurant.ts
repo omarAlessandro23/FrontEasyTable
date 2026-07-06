@@ -8,4 +8,5 @@ export class Restaurant {
   latitude: number = 0
   longitude: number = 0
   idCategory: number = 0
+  nombreCategoria: string = ''
 }

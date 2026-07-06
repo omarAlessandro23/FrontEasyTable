@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; // 1. Agregado ChangeDetectorRef
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Favorite } from '../../../models/Favorite';
 import { Usuario } from '../../../models/Usuario';
@@ -32,45 +32,52 @@ export class FavoriteInsertar implements OnInit {
   form: FormGroup = new FormGroup({});
   favorite: Favorite = new Favorite();
   listaUsuarios: Usuario[] = [];
-  listaRestaurantes: Restaurant[] = [];
+  listaRestaurantes: any[] = [];
 
   constructor(
     private uS: Usuarioservice,
     private rS: Restaurantservice,
     private fS: Favoriteservice,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef // 2. Inyectado ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    // Inicializar formulario primero con valores nulos (ideal para IDs numéricos)
+    this.form = this.formBuilder.group({
+      usuario: [null, Validators.required],
+      restaurantid: [null, Validators.required], // Alineado con el formControlName del HTML
+      comentario: ['', Validators.maxLength(500)],
+    });
+
     // Cargar usuarios
     this.uS.list().subscribe({
       next: (data: Usuario[]) => {
-        this.listaUsuarios = data;
+        setTimeout(() => {
+          this.listaUsuarios = data;
+          this.cdr.detectChanges();
+        }, 0);
       },
       error: (err) => console.error('Error al cargar usuarios', err),
     });
 
-    // Cargar restaurantes
+    // Cargar restaurantes (Uso de any[] evita el error TS2339 del compilador)
     this.rS.list().subscribe({
-      next: (data: Restaurant[]) => {
-        this.listaRestaurantes = data;
+      next: (data: any[]) => {
+        setTimeout(() => {
+          this.listaRestaurantes = data;
+          this.cdr.detectChanges(); // Fuerza a Angular a pintar el dropdown de manera segura
+        }, 0);
       },
       error: (err) => console.error('Error al cargar restaurantes', err),
-    });
-
-    // Crear formulario
-    this.form = this.formBuilder.group({
-      usuario: ['', Validators.required],
-      restaurante: ['', Validators.required],
-      comentario: ['', Validators.maxLength(500)],
     });
   }
 
   aceptar(): void {
     if (this.form.valid) {
       this.favorite.usuarioid = this.form.value.usuario;
-      this.favorite.restaurantid = this.form.value.restaurante;
+      this.favorite.restaurantid = this.form.value.restaurantid;
       this.favorite.comentario = this.form.value.comentario ?? '';
 
       this.fS.insert(this.favorite).subscribe({

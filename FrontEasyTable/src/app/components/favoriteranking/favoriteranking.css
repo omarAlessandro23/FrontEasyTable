@@ -1,0 +1,97 @@
+.ranking-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+h2 {
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+.content-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+/* En pantallas grandes, divide gráfico y tabla lado a lado */
+@media (min-width: 768px) {
+  .content-layout {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+}
+
+.chart-wrapper {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table th {
+  background-color: #edf2f7;
+  color: #4a5568;
+  padding: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.ranking-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.restaurant-name {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.count-cell {
+  font-weight: bold;
+  color: #e53e3e;
+}
+
+/* Insignias de Podio */
+.podium-badge {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #cbd5e0;
+  color: #4a5568;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.podium-badge.top-1 { background-color: #ecc94b; color: #744210; } /* Oro */
+.podium-badge.top-2 { background-color: #a0aec0; color: #2d3748; } /* Plata */
+.podium-badge.top-3 { background-color: #ed8936; color: #742a2a; } /* Bronce */
+
+.loading-state, .error-state {
+  text-align: center;
+  padding: 3rem;
+  color: #718096;
+}

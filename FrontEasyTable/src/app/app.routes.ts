@@ -30,6 +30,11 @@ import { ReservationUpdate } from './components/reservationcomponent/reservation
 import { Favoritecomponent } from './components/favoritecomponent/favoritecomponent';
 import { FavoriteListar } from './components/favoritecomponent/favorite-listar/favorite-listar';
 import { FavoriteInsertar } from './components/favoritecomponent/favorite-insertar/favorite-insertar';
+import { Reviewreport } from './components/reviewreport/reviewreport';
+import { Favoriteranking } from './components/favoriteranking/favoriteranking';
+import { Reporte02 } from './components/reporte02/reporte02';
+import { Reporte01 } from './components/reporte01/reporte01';
+import { Reporte03 } from './components/reporte03/reporte03';
 
 export const routes: Routes = [
   {
@@ -151,7 +156,35 @@ export const routes: Routes = [
       { path: 'news', component: FavoriteInsertar },
     ]
   },
+  {
+    path: 'reportesreview',
+    component: Reviewreport,
+    canActivate: [seguridadGuard]
+  
+  },
+   {
+    path: 'rankingfavoritos',
+    component: Favoriteranking,
+    canActivate: [seguridadGuard]
+  
+  },
+ {
+    path: 'reporte01',
+    component: Reporte01,
+    canActivate: [seguridadGuard]
 
+  },
+  {
+    path: 'reporte02',
+    component: Reporte02,
+    canActivate: [seguridadGuard]
+  },
+
+  {
+    path: 'reporte03',
+    component: Reporte03,
+    canActivate: [seguridadGuard]
+  },
   // SIEMPRE AL FINAL
   {
     path: '**',

@@ -14,9 +14,10 @@ export class Favoriteservice {
   constructor(private http: HttpClient) {}
 
   /** GET /favorite/listar — ADMIN, OWNER, USER */
-  list() {
-    return this.http.get<Favorite[]>(`${this.url}/listar`);
-  }
+ // Si tienes un modelo Restaurant, úsalo aquí. Si no, usa any[]
+list() {
+  return this.http.get<any[]>(`${this.url}/listar`);
+}
 
   /** GET /favorite/usuario/{idUsuario} — ADMIN, USER */
   listByUser(idUsuario: number) {
