@@ -1,5 +1,20 @@
 <app-menucomponent></app-menucomponent>
 
+<!-- Botón flotante para traducir toda la app a inglés -->
+<button
+  type="button"
+  class="translate-fab"
+  data-no-translate
+  (click)="toggleTranslation()"
+  [disabled]="translateService.isTranslating()"
+>
+  @if (translateService.isTranslating()) {
+    <span class="translate-fab__spinner"></span>
+  } @else {
+    {{ translateService.isEnglish() ? '🇪🇸 ES' : '🇬🇧 EN' }}
+  }
+</button>
+
 <!-- Envolvemos el router-outlet aquí -->
 <div class="menu-content-container">
   <router-outlet></router-outlet>

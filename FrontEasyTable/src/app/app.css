@@ -16,6 +16,55 @@
   flex-direction: column;
 }
 
+/* Botón flotante para traducir toda la página */
+.translate-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  min-width: 64px;
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 22px;
+  background-color: #b3261e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.translate-fab:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #931e18;
+}
+
+.translate-fab:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.translate-fab__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: translate-fab-spin 0.7s linear infinite;
+}
+
+@keyframes translate-fab-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Opcional: Una clase global por si quieres que tus formularios floten en tarjetas tipo cristal */
 .glass-card {
   background: rgba(255, 255, 255, 0.95);
