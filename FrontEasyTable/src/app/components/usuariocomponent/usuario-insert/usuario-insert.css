@@ -1,76 +1,108 @@
-/* Contenedor principal que centra la tarjeta en la pantalla */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    padding: 20px;
-    font-family: 'Roboto', sans-serif;
+/* Contenedor Principal en forma de Tarjeta */
+.form-container {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
-/* Título principal */
-h2 {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 500;
-    margin-bottom: 10px;
+/* Contenedor del Botón Back */
+.back-button-container {
+  margin-bottom: 1.5rem;
 }
 
-/* Tarjeta del formulario */
-form {
-    background: #fdfdfd;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Sombra suave avanzada */
-    max-width: 650px;
-    width: 100%;
-    box-sizing: border-box;
-
-    /* Activamos CSS Grid para acomodar los inputs de forma inteligente */
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Crea dos columnas iguales */
-    gap: 15px 20px; /* Espaciado entre inputs (arriba/abajo - izquierda/derecha) */
+.back-button-container button {
+  display: inline-flex;
+  align-items: center;
+  color: #5f6368;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-/* Forzar que ciertos campos ocupen todo el ancho completo (Ambas columnas) */
-mat-form-field.example-full-width,
-form > div:last-child {
-    grid-column: span 2; 
+.back-button-container mat-icon {
+  margin-right: 6px;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
-/* Ajustes individuales para Angular Material */
-mat-form-field {
-    width: 100%; /* Asegura que el input use todo su espacio asignado */
+/* Cabecera del Formulario */
+.form-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-/* Contenedor de botones (Registrar y Cancelar) */
-form > div:last-child {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Espacio entre el botón azul y el rojo */
-    margin-top: 25px;
+.form-header h2 {
+  font-size: 2rem;
+  color: #1a1f36;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
 }
 
-/* Estilos de botones para darles un toque más moderno */
-button[mat-raised-button] {
-    padding: 10px 25px !important;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 6px !important;
-    letter-spacing: 0.5px;
+.form-header p {
+  color: #a3acb9;
+  margin: 0;
+  font-size: 0.95rem;
 }
 
-/* --- RESPONSIVO --- */
-/* Si se ve desde un celular, todo vuelve a una sola columna */
+/* Estructura del Formulario */
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Filas de dos columnas */
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.form-row mat-form-field {
+  flex: 1;
+  width: 100%;
+}
+
+/* Sección de Botones de Acción */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f4f6f8;
+}
+
+.form-actions button {
+  padding: 0.4rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  height: 45px;
+}
+
+/* Adaptabilidad para Dispositivos Móviles (Pantallas pequeñas) */
 @media (max-width: 600px) {
-    form {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-    
-    mat-form-field.example-full-width,
-    form > div:last-child {
-        grid-column: span 1;
-    }
+  .form-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
 }

@@ -10,5 +10,5 @@ export class Usuario {
     ciudad: string = ''
     longitud: number = 0
     latitud: number = 0
-
+    roles: { rol: string }[] = [];
 }

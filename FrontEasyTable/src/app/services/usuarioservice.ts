@@ -19,8 +19,10 @@ export class Usuarioservice {
       return this.http.get<Usuario>(`${this.url}/${id}`);
     }
   insert(c: Usuario) {
-    return this.http.post(`${this.url}/registrar`, c);
-  }
+  return this.http.post(`${this.url}/registrar`, c, { 
+    responseType: 'text' 
+  });
+}
   delete(id: number) {
     return this.http.delete(`${this.url}/eliminar/${id}`, { responseType: 'text' });
   }

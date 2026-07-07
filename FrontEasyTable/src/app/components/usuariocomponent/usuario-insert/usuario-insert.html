@@ -1,101 +1,101 @@
-<div class="container">
-    <div style="text-align: center; margin: 3%;">
-        <h2>Registro de Usuario</h2>
+<div class="form-container">
+  <div class="back-button-container">
+    <button mat-button routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Back</span>
+    </button>
+  </div>
+
+  <div class="form-header">
+    <h2>Registro de Usuario</h2>
+    <p>Crea tu cuenta completando los siguientes datos</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="aceptar()" class="custom-form">
+    
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Nombre de usuario" formControlName="username">
+        <mat-error *ngIf="form.get('username')?.hasError('required')">
+          El username es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          Máximo 100 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput type="email" placeholder="ejemplo@correo.com" formControlName="correo">
+        <mat-error *ngIf="form.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+      </mat-form-field>
     </div>
 
-    <div style="text-align: center; margin: 3%;">
-        <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" placeholder="Ingresa tu contraseña" formControlName="contrasenia">
+        <mat-error *ngIf="form.get('contrasenia')?.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Usuario</mat-label>
-                <input matInput placeholder="nombre del usuario" formControlName="username">
-                <mat-error *ngIf="form.get('username')?.hasError('username')">
-                    El username es obligatorio
-                </mat-error>
-                <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
-                    Máximo 100 caracteres
-                </mat-error>
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Correo</mat-label>
-                <input matInput placeholder=" correo" formControlName="correo">
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field class="example-full-width">
-                <mat-label>contrasenia</mat-label>
-                <input matInput placeholder=" contrasenia" formControlName="contrasenia">
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field appearance="outline">
-                <mat-label>Hora de creacion</mat-label>
-
-                <input matInput type="time" min="10:00" max="17:00" formControlName="horacreacion">
-
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field class="example-full-width">
-                <mat-label>nombre completo</mat-label>
-                <input matInput placeholder=" nombrecompleto" formControlName="nombrecompleto">
-            </mat-form-field>
-
-
-            <br />
-
-            <mat-form-field appearance="outline">
-                <mat-label>numero de celular</mat-label>
-
-                <input matInput placeholder=" numcelular" formControlName="numcelular">
-
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field appearance="outline">
-                <mat-label>Ciudad</mat-label>
-
-                <input matInput placeholder=" ciudad" formControlName="ciudad">
-
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field appearance="outline">
-                <mat-label>longitud</mat-label>
-
-                <input matInput placeholder=" longitud" formControlName="longitud">
-
-            </mat-form-field>
-
-            <br />
-
-            <mat-form-field appearance="outline">
-                <mat-label>latitud</mat-label>
-
-                <input matInput placeholder=" latitud" formControlName="latitud">
-
-            </mat-form-field>
-
-            <br />
-
-            <div>
-                <button mat-raised-button color="primary" type="submit">
-                    Registrar
-                </button>
-
-                <button mat-raised-button color="warn" type="button" (click)="cancelar()">
-                    Cancelar
-                </button>
-            </div>
-
-        </form>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput placeholder="Nombres y apellidos" formControlName="nombrecompleto">
+        <mat-error *ngIf="form.get('nombrecompleto')?.hasError('required')">
+          El nombre completo es obligatorio
+        </mat-error>
+      </mat-form-field>
     </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Número de Celular</mat-label>
+        <input matInput placeholder="Ej: 987654321" formControlName="numcelular">
+        <mat-error *ngIf="form.get('numcelular')?.hasError('required')">
+          El número de celular es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ciudad</mat-label>
+        <input matInput placeholder="Ej: Tarapoto" formControlName="ciudad">
+        <mat-error *ngIf="form.get('ciudad')?.hasError('required')">
+          La ciudad es obligatoria
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Longitud</mat-label>
+        <input matInput type="number" placeholder="Coordenada X" formControlName="longitud">
+        <mat-error *ngIf="form.get('longitud')?.hasError('required')">
+          La longitud es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Latitud</mat-label>
+        <input matInput type="number" placeholder="Coordenada Y" formControlName="latitud">
+        <mat-error *ngIf="form.get('latitud')?.hasError('required')">
+          La latitud es obligatoria
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Registrar Usuario
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+
+  </form>
 </div>

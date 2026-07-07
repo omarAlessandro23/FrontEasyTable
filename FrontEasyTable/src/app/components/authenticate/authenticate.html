@@ -1,17 +1,31 @@
-<div class="container" style="text-align: center">
-  <div>
-    <img src="assets/logo.png" alt="Logo de la empresa" />
+<div class="container" style="text-align: center; position: relative;">
+  
+  <div style="text-align: left; margin-bottom: 15px;">
+    <button mat-button routerLink="/">
+      <mat-icon style="vertical-align: middle; margin-right: 4px;">arrow_back</mat-icon>
+      Back
+    </button>
   </div>
+
+  <div>
+    <img src="assets/logo.png" alt="Company logo displayed at the top of the login page" />
+  </div>
+  
   <h2>Inicie sesión</h2>
+  
   <mat-form-field class="example-full-width">
     <mat-label>Usuario</mat-label>
     <input matInput placeholder="Nombre" [(ngModel)]="nombre" />
   </mat-form-field>
   <br />
+  
   <mat-form-field class="example-full-width">
     <mat-label>Contrasenia</mat-label>
-    <input type="contrasenia" matInput placeholder="Constrasenia" [(ngModel)]="contrasenia" />
+    <input type="password" matInput placeholder="Contrasenia" [(ngModel)]="contrasenia" />
   </mat-form-field>
   <br />
-  <button mat-raised-button  (click)="login()">Ingresar</button>
+
+  <div style="margin-top: 15px;">
+    <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+  </div>
 </div>

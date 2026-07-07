@@ -14,8 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { Usuario } from '../../../models/Usuario';
 import { Usuarioservice } from '../../../services/usuarioservice';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-usuario-insert',
@@ -26,6 +27,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatRadioModule,
     ReactiveFormsModule,
     MatButtonModule,
+    RouterLink,
+    MatIconModule,
   ],
   templateUrl: './usuario-insert.html',
   providers: [provideNativeDateAdapter()],
@@ -47,7 +50,6 @@ export class UsuarioInsert implements OnInit {
       username: ['', Validators.required],
       correo: ['', Validators.required],
       contrasenia: ['', Validators.required],
-      horacreacion: [Validators.required, this.horaValida],
       nombrecompleto: ['', Validators.required],
       numcelular: ['', Validators.required],
       ciudad: ['', Validators.required],
@@ -58,30 +60,40 @@ export class UsuarioInsert implements OnInit {
   cancelar() {
     this.router.navigate(['/usuario/lista']);
   }
-  horaValida(control: AbstractControl) {
-    const hora = control.value;
-    if (!hora) return null;
-    return hora >= '10:00' && hora <= '17:00' ? null : { horaInvalida: true };
-  }
+
   aceptar() {
     if (this.form.valid) {
       this.cur.username = this.form.value.username;
       this.cur.correo = this.form.value.correo;
       this.cur.contrasenia = this.form.value.contrasenia;
-      this.cur.horacreacion = this.form.value.horacreacion;
       this.cur.nombrecompleto = this.form.value.nombrecompleto;
       this.cur.numcelular = this.form.value.numcelular;
       this.cur.ciudad = this.form.value.ciudad;
       this.cur.longitud = this.form.value.longitud;
       this.cur.latitud = this.form.value.latitud;
-      this.uS.insert(this.cur).subscribe(() => {
-        this.snackBar.open('Usuario registrado correctamente', 'Cerrar', {
-          duration: 3000,
-        });
+      this.cur.roles = [
+  {
+    rol: 'USER'
+  }
+];
+      this.uS.insert(this.cur).subscribe({
+        next: () => {
+          this.snackBar.open('Usuario registrado correctamente', 'Cerrar', {
+            duration: 3000,
+          });
 
-        this.form.reset();
+          this.form.reset();
 
-        this.router.navigate(['/usuario/news']);
+          this.router.navigate(['/usuario/news']);
+        },
+        error: (error) => {
+          console.error('Error al registrar usuario:', error);
+          this.snackBar.open(
+            'Ocurrió un error al registrar el usuario. Intente nuevamente.',
+            'Cerrar',
+            { duration: 3000 },
+          );
+        },
       });
     } else {
       this.snackBar.open('Complete todos los campos obligatorios', 'Cerrar', {
