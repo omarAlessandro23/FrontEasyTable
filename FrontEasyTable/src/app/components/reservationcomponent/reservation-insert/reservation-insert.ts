@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Reservation } from '../../../models/Reservation';
 import { Usuario } from '../../../models/Usuario';
@@ -46,14 +46,47 @@ export class ReservationInsert implements OnInit {
     private tS: RestaurantTableservice,
     private resS: Reservationservice,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.uS.list().subscribe({ next: (data) => (this.listaUsuarios = data) });
-    this.rS.list().subscribe({ next: (data) => (this.listaRestaurantes = data) });
-    this.sS.list().subscribe({ next: (data) => (this.listaHorarios = data) });
-    this.tS.list().subscribe({ next: (data) => (this.listaMesas = data) });
+    this.uS.list().subscribe({
+      next: (data) => {
+        setTimeout(() => {
+          this.listaUsuarios = data;
+          this.cdr.detectChanges();
+        }, 0);
+      },
+      error: (err) => console.error('Error al cargar usuarios', err)
+    });
+    this.rS.list().subscribe({
+      next: (data) => {
+        setTimeout(() => {
+          this.listaRestaurantes = data;
+          this.cdr.detectChanges();
+        }, 0);
+      },
+      error: (err) => console.error('Error al cargar restaurantes', err)
+    });
+    this.sS.list().subscribe({
+      next: (data) => {
+        setTimeout(() => {
+          this.listaHorarios = data;
+          this.cdr.detectChanges();
+        }, 0);
+      },
+      error: (err) => console.error('Error al cargar horarios', err)
+    });
+    this.tS.list().subscribe({
+      next: (data) => {
+        setTimeout(() => {
+          this.listaMesas = data;
+          this.cdr.detectChanges();
+        }, 0);
+      },
+      error: (err) => console.error('Error al cargar mesas', err)
+    });
 
     this.form = this.formBuilder.group({
       usuario: ['', Validators.required],
