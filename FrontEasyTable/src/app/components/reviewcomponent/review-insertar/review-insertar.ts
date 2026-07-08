@@ -31,7 +31,7 @@ export class ReviewInsertar implements OnInit {
   form: FormGroup = new FormGroup({});
   review: Review = new Review();
   listaUsuarios: Usuario[] = [];
-  listaRestaurantes: Restaurant[] = [];
+  listaRestaurantes: any[] = [];
 
   constructor(
     private uS: Usuarioservice,
