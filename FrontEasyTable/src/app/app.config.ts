@@ -31,8 +31,8 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter,
-          allowedDomains: ['localhost:8080'],
-          disallowedRoutes: ['http://localhost:8080/login/forget'],
+          allowedDomains: ['easytable-backend.onrender.com'],
+          disallowedRoutes: ['https://easytable-backend.onrender.com/login/forget'],
         },
       })
     ),
