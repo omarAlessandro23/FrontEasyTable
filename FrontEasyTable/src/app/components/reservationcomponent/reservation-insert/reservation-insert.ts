@@ -35,7 +35,7 @@ export class ReservationInsert implements OnInit {
   form: FormGroup = new FormGroup({});
   reservation: Reservation = new Reservation();
   listaUsuarios: Usuario[] = [];
-  listaRestaurantes: Restaurant[] = [];
+  listaRestaurantes: any[] = [];
   listaHorarios: Schedule[] = [];
   listaMesas: RestaurantTable[] = [];
 
