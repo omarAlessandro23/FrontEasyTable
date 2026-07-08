@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Review } from '../../../models/Review';
 import { Usuario } from '../../../models/Usuario';
@@ -38,14 +38,18 @@ export class ReviewInsertar implements OnInit {
     private rS: Restaurantservice,
     private revS: Reviewservice,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     // Cargar usuarios
     this.uS.list().subscribe({
       next: (data: Usuario[]) => {
-        this.listaUsuarios = data;
+        setTimeout(() => {
+          this.listaUsuarios = data;
+          this.cdr.detectChanges();
+        }, 0);
       },
       error: (err) => console.error('Error al cargar usuarios', err)
     });
@@ -53,7 +57,10 @@ export class ReviewInsertar implements OnInit {
     // Cargar restaurantes
     this.rS.list().subscribe({
       next: (data: Restaurant[]) => {
-        this.listaRestaurantes = data;
+        setTimeout(() => {
+          this.listaRestaurantes = data;
+          this.cdr.detectChanges();
+        }, 0);
       },
       error: (err) => console.error('Error al cargar restaurantes', err)
     });
