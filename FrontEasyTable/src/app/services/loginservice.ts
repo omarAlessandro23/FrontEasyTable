@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { JwtRequestDTO } from '../models/JwtRequestDTO';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
 export class Loginservice {
+
+  private base_url = environment.base;
+
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -18,7 +21,7 @@ export class Loginservice {
   }
 
   login(request: JwtRequestDTO) {
-    return this.http.post('http://localhost:8080/login', request);
+    return this.http.post(`${this.base_url}/login`, request);
   }
 
   verificar(): boolean {
